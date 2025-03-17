@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Nunito+Sans:wght@300;600;700&display=swap");
+
+$headings: Helvetica Neue, Helvetica, Arial, sans-serif;
+$textFont: Helvetica Neue, Helvetica, Arial, sans-serif;
+$fontSize: 16px;
+
+$white: #ffffff;
+$black: #000000;
+$primary: #233785;
+$darkPrimary: #07185a;
+$darkGray: #333333;
+$gray: #808080;
+$lightGray: #d5d3d3;
+$hoverLink: #ff6347;
+
+$turquoise: #11cac4;
+
+$orange: #c47300;
+$yellow: #e5bf1b;
+
+$shadow: #d8d8d8;
+
+$transition: 0.5s ease;
+
+$boxShadow: 0 10px 20px 0px rgba($darkGray, 1);
+$boxShadow-sm: 0 0px 5px 0px rgba($darkGray, 1);
+
+$py: 140px 0;
+$containerWidth: 1280px;
