@@ -63,7 +63,6 @@ $router->post($prefix . "/widget/create", "dashboard/widget/save.php")->only(ADM
 $router->put($prefix . "/widget/:id", "dashboard/widget/update.php")->only(ADMIN);
 $router->delete($prefix . "/widget/:id", "dashboard/widget/delete.php")->only(ADMIN);
 
-
 //NAVBAR
 $router->get($prefix . "/navbar", "dashboard/navbar/index.php")->only(ADMIN);
 

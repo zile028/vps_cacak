@@ -38,7 +38,7 @@
     <!-- ============================================================== -->
     <div class="row">
         <div class="col-md-6">
-            <?php view("partials/pagination", ["count" => $count, "cbUrl" => "/media", "limit" => $limit]) ?>
+            <?php view("dashboard/partials/pagination", ["count" => $count, "cbUrl" => "/media", "limit" => $limit]) ?>
         </div>
         <div class="col-md-6">
             <form action="" class="d-flex gap-2">

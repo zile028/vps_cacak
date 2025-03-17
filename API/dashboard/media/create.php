@@ -21,6 +21,11 @@ if (Validator::string($_POST["fileName"]) && $file->isValid()) {
             "size" => $file->size,
         ];
         $db->query($sql, $bindParam);
+
+        if (file_exists(UPLOAD_DIR . $file->name.".".$file->extension) && unlink(UPLOAD_DIR . $file->name.".".$file->extension)) {
+        redirect("/media");
+
+        }
         redirect("/media");
     }
 } else {

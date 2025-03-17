@@ -21,7 +21,7 @@ class FileValidator
     private int $limit = 3;
     private array $validType = [];
     public mixed $file = null;
-    private string $name;
+    public string $name;
     public string $type;
     private string $tmp_name;
     public mixed $size = null;

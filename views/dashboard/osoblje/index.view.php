@@ -30,7 +30,7 @@
             </div>
         <?php endif; ?>
         <div class="col-md-6 col-lg-2 col-xlg-3">
-            <a href="/staff/add">
+            <a href="/dashboard/staff/add">
                 <div class="card card-hover">
                     <div class="box bg-cyan text-center">
                         <h1 class="font-light text-white">
@@ -42,7 +42,7 @@
             </a>
         </div>
         <div class="col-md-6 col-lg-2 col-xlg-3">
-            <a href="/staff/all">
+            <a href="/dashboard/staff/all">
                 <div class="card card-hover">
                     <div class="box bg-cyan text-center">
                         <h1 class="font-light text-white">
@@ -60,7 +60,7 @@
             <?php foreach ($lang as $odbor) : ?>
                 <!-- Column -->
                 <div class="col-md-6 col-lg-2 col-xlg-3">
-                    <a href="/staff/category/<?php echo $odbor->id; ?>">
+                    <a href="/dashboard/staff/category/<?php echo $odbor->id; ?>">
                         <div class="card card-hover">
                             <div class="box bg-cyan text-center">
                                 <h1 class="font-light text-white">
