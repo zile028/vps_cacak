@@ -7,7 +7,7 @@
     <h4>МЕДИЈА</h4>
     <div class="card container-fluid p-3">
         <div class="d-flex w-100">
-            <form class="form-inline row gap-2 align-items-center w-100" action="/media"
+            <form class="form-inline row gap-2 align-items-center w-100" action="/dashboard/media"
                   method="post"
                   enctype="multipart/form-data">
                 <div class="col-sm-12 col-lg-8 d-flex align-items-center gap-2 ">
@@ -38,7 +38,7 @@
     <!-- ============================================================== -->
     <div class="row">
         <div class="col-md-6">
-            <?php view("dashboard/partials/pagination", ["count" => $count, "cbUrl" => "/media", "limit" => $limit]) ?>
+            <?php view("dashboard/partials/pagination", ["count" => $count, "cbUrl" => "/dashboard/media", "limit" => $limit]) ?>
         </div>
         <div class="col-md-6">
             <form action="" class="d-flex gap-2">

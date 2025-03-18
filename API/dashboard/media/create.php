@@ -22,11 +22,11 @@ if (Validator::string($_POST["fileName"]) && $file->isValid()) {
         ];
         $db->query($sql, $bindParam);
 
-        if (file_exists(UPLOAD_DIR . $file->name.".".$file->extension) && unlink(UPLOAD_DIR . $file->name.".".$file->extension)) {
-        redirect("/media");
+        if (file_exists(UPLOAD_DIR . $file->name . "." . $file->extension) && unlink(UPLOAD_DIR . $file->name . "." . $file->extension)) {
+            redirect("/dashboard/media");
 
         }
-        redirect("/media");
+        redirect("/dashboard/media");
     }
 } else {
     dd($file->getError());

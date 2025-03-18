@@ -5,7 +5,7 @@
 <!-- Start Page Content -->
 <!-- ============================================================== -->
 <div class="card">
-    <form class="form-horizontal" action="/staff/add" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" action="/dashboard/staff/add" method="post" enctype="multipart/form-data">
         <?php if (isset($staff, $lang)): ?>
             <input type="hidden" name="rel_lang" value="<?php echo $lang ?>">
             <input type="hidden" name="rel_id" value="<?php echo $staff->id ?>">

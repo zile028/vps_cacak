@@ -32,4 +32,4 @@ array_unshift($updateData, json_encode($translateRelation));
 $placeholders = implode(",", array_fill(0, count($translateRelation), "?"));
 $sql = "UPDATE osoblje SET translate_relation = ? WHERE id IN ($placeholders)";
 $result = $db->query($sql, $updateData);
-redirect("/staff/all");
+redirect("/dashboard/staff/all");

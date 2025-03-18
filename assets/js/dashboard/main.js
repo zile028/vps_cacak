@@ -42,9 +42,8 @@ $(document).ready(function () {
     $('.select2').select2({
         templateResult: formatOption, templateSelection: formatOption
     });
-    $('.select2').on('change', function () {
+    $(".select2[data-image='preview']").on('change', function () {
         let [selected] = $(this).find("option:selected");
-        console.log(selected);
         // let selectedValue = $(this).val(); // Dobija selektovanu vrednost
         // console.log($(this));
         $('#imagePreview').attr('src', selected.getAttribute("data-storeName")); // Postavlja src atribut

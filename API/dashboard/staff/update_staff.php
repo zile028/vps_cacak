@@ -9,7 +9,8 @@ $data = [
     "rank" => $_POST["rank"],
     "imageID" => $_POST["imageID"],
     "id" => $params["id"],
-    "sufix" => $_POST["sufix"]
+    "sufix" => $_POST["sufix"],
+    "cv" => $_POST["cv"]
 ];
 $sql = "
         UPDATE osoblje o SET 
@@ -19,12 +20,13 @@ $sql = "
             o.title = :title,
             o.rank = :rank,
             o.imageID = :imageID,
-            o.sufix = :sufix
+            o.sufix = :sufix,
+            o.cv = :cv
         WHERE o.id = :id;
 ";
 try {
     $result = $db->query($sql, $data);
-    redirect("/staff/all");
+    redirect("/dashboard/staff/all");
 } catch (Exception $e) {
-    view("dashboard//errors/error_page_message.view", ["error" => $e, "cbUrl" => referer()]);
+    view("dashboard/errors/error_page_message.view", ["error" => $e, "cbUrl" => referer()]);
 }

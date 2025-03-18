@@ -3,7 +3,7 @@ $db = \Core\App::resolve(\Core\Database::class);
 $sql = "
     SELECT * FROM odbori WHERE id = :id;
 
-    SELECT  op.pozicija, os.id,oo.id,
+    SELECT op.pozicija, os.id,oo.id,
            oo.osobljeID, oo.pozicija, oo.prioritet, os.rank,
            CONCAT(os.firstName, ' ' ,os.lastName) AS fullName , os.title, os.imageID, m.storeName AS image
         FROM odbori o

@@ -119,6 +119,7 @@ $router->post($prefix . "/staff/add", "dashboard/staff/add_staff.php")->only(AUT
 $router->post($prefix . "/staff/category/add", "dashboard/staff/save_category.php")->only(AUTH);
 $router->post($prefix . "/staff/category/:id/position", "dashboard/staff/save_category_positions.php")->only(AUTH);
 $router->post($prefix . "/staff/education/:id", "dashboard/staff/staff_education_save.php")->only(AUTH);
+
 $router->put($prefix . "/staff/edit/:id", "dashboard/staff/update_staff.php")->only(AUTH);
 $router->put($prefix . "/staff/category/:id", "dashboard/staff/category_append_staff.php")->only(AUTH);
 $router->put($prefix . "/staff/relation", "dashboard/staff/relate_staff.php")->only(AUTH);

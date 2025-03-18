@@ -3,7 +3,7 @@
 <div class="card">
     <div class="card-body">
         <h3>Додај у <?php echo $odbor->odbor; ?></h3>
-        <form action="/staff/category/<?php echo $odbor->id; ?>" class="row" method="post">
+        <form action="/dashboard/staff/category/<?php echo $odbor->id; ?>" class="row" method="post">
             <input type="hidden" name="_method" value="put">
             <div class="row">
                 <div class="col-md-6">
@@ -24,7 +24,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <label for="pozicija">Позиција</label>
                             <a class="btn btn-sm rounded-pill btn-primary py-0"
-                               href="/staff/category/<?php echo $odbor->id; ?>/position">
+                               href="/dashboard/staff/category/<?php echo $odbor->id; ?>/position">
                                 <i class="mdi mdi-plus"></i> Позиција</a>
                         </div>
                         <select id="pozicija" class="form-control"
@@ -40,7 +40,8 @@
                     </div>
                 </div>
                 <div class="col-md d-flex align-items-end mb-3">
-                    <button class="btn btn-primary form-control" type="submit">ДОДАЈ ЗАПОСЛЕНОГ
+                    <button class="btn btn-primary form-control" type="submit">
+                        ДОДАЈ ЗАПОСЛЕНОГ
                     </button>
                 </div>
             </div>
@@ -69,7 +70,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($pozicije as $pozicija) : ?>
+                <?php foreach ($pozicije as $pozicija): ?>
                     <?php if (isset($clanovi[$pozicija->pozicija])): ?>
                         <tr>
                             <td colspan="6"><?php echo $pozicija->pozicija; ?></td>
@@ -87,7 +88,7 @@
                                 <td><?php echo $clan->rank; ?></td>
                                 <td style="width: 1%">
                                     <form
-                                            action="/staff/category/<?php echo $odbor->id; ?>/<?php echo $clan->osobljeID; ?>"
+                                            action="/dashboard/staff/category/<?php echo $odbor->id; ?>/<?php echo $clan->osobljeID; ?>"
                                             class="d-flex" method="post">
                                         <input type="hidden" name="_method" value="patch">
                                         <input style="width: 70px;" class="form-control" type="number" name="prioritet"
@@ -98,7 +99,7 @@
 
                                 </td>
                                 <td>
-                                    <form action="/staff/category/member/<?php echo $clan->id;
+                                    <form action="/dashboard/staff/category/member/<?php echo $clan->id;
                                     ?>" method="post">
                                         <input type="hidden" name="_method" value="delete">
                                         <button class="btn btn btn-danger"><i class="mdi

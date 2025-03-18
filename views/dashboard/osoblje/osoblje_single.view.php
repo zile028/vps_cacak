@@ -5,18 +5,15 @@
     <!-- ============================================================== -->
     <h4 class="card-title">Особље/Додавање</h4>
     <div class="card ">
-        <form class="form-horizontal" action="/staff/edit/<?php echo $osoba->id; ?>"
+        <form class="form-horizontal" action="/dashboard/staff/edit/<?php echo $osoba->id; ?>"
               method="post"
               enctype="multipart/form-data">
             <input type="hidden" name="_method" value="put">
             <div class="card-body">
                 <div class="row">
-
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-end control-label
-                    col-form-label">Име</label
-                            >
+                            <label for="fname" class="col-sm-3 text-end control-label col-form-label">Име</label>
                             <div class="col-sm-9">
                                 <input
                                         type="text"
@@ -114,8 +111,32 @@
                                 />
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label
+                                    for="cv"
+                                    class="col-sm-3 text-end control-label col-form-label"
+                            >CV</label
+                            >
+                            <div class="col-sm-9">
+                                <div class="border border-secondary border-1 ">
+                                    <select id="cv" class="form-control select2 w-100" name="cv">
+                                        <option value="">CV</option>
+                                        <?php foreach ($curriculum as $cv) : ?>
+                                            <option
+                                                    value="<?php echo $cv->id; ?>"
+                                                <?php echo (int)$cv->id === (int)$osoba->cv ? "selected" : "" ?>
+                                            >
+                                                (<?php echo $cv->id; ?>) <?php echo $cv->fileName; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
 
                     </div>
+
                     <div class="col-md-6">
                         <div>
                             <img id="imagePreview" class="img-fluid" style="height: 300px"
@@ -125,22 +146,25 @@
                         </div>
                         <div class="col-md-6">
                             <label for="featuredImage">Насловна слика</label>
-                            <?php if (count($media) > 0): ?>
-                                <select id="featuredImage" class="form-control select2" name="imageID">
-                                    <?php foreach ($media as $image) : ?>
-                                        <option value="<?php echo $image->id; ?>"
-                                            <?php echo $image->id === $osoba->imageID ? "selected" : "" ?>
-                                                data-storeName="<?php uploadPath($image->storeName); ?>">
-                                            (<?php echo $image->id; ?>) <?php echo $image->fileName; ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            <?php else: ?>
-                                <p class="text-danger fw-bold">
-                                    Насловна слика је обавезна, додајте је
-                                    прво у медијима како би сте је овде могли одабрати.
-                                </p>
-                            <?php endif; ?>
+                            <div class="border border-secondary border-1 ">
+                                <?php if (count($media) > 0): ?>
+                                    <select id="featuredImage" class="form-control select2 w-100" data-image="preview"
+                                            name="imageID">
+                                        <?php foreach ($media as $image) : ?>
+                                            <option value="<?php echo $image->id; ?>"
+                                                <?php echo $image->id === $osoba->imageID ? "selected" : "" ?>
+                                                    data-storeName="<?php uploadPath($image->storeName); ?>">
+                                                (<?php echo $image->id; ?>) <?php echo $image->fileName; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                <?php else: ?>
+                                    <p class="text-danger fw-bold">
+                                        Насловна слика је обавезна, додајте је
+                                        прво у медијима како би сте је овде могли одабрати.
+                                    </p>
+                                <?php endif; ?>
+                            </div>
                         </div>
 
 
