@@ -8,18 +8,20 @@
 </div>
 <div class="card">
     <div class="card-body">
-        <form action="/staff/education/<?php echo $zaposleni->id; ?>" method="post">
+        <form action="/dashboard/staff/education/<?php echo $zaposleni->id; ?>" method="post">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="tema">Тема</label>
-                        <textarea class="form-control" style="resize: none" name="tema" id="tema" cols="30" rows="3" required></textarea>
+                        <textarea class="form-control" style="resize: none" name="tema" id="tema" cols="30" rows="3"
+                                  required></textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="ustanova">Установа</label>
-                        <textarea class="form-control" style="resize: none" name="ustanova" id="tema" cols="30" rows="3" required></textarea>
+                        <textarea class="form-control" style="resize: none" name="ustanova" id="tema" cols="30" rows="3"
+                                  required></textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -60,7 +62,7 @@
                     <td><?php echo $item->tema; ?></td>
                     <td><?php echo $item->ustanova; ?></td>
                     <td>
-                        <form action="/staff/education/<?php echo $item->id ?>" method="post">
+                        <form action="/dashboard/staff/education/<?php echo $item->id ?>" method="post">
                             <input type="hidden" name="_method" value="delete">
                             <button class="btn btn-sm btn-danger"><i class="mdi mdi-delete"></i></button>
                         </form>

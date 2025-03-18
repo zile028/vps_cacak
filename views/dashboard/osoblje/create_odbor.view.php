@@ -4,7 +4,7 @@
     <div class="card-body">
         <h3>Додавање категорије</h3>
 
-        <form action="/staff/category/add" class="row" method="post">
+        <form action="/dashboard/staff/category/add" class="row" method="post">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -63,21 +63,23 @@
                         <td><?php echo $item->odbor; ?></td>
                         <td>
                             <form
-                                    action="/staff/category/priority/<?php echo $item->id; ?>"
+                                    action="/dashboard/staff/category/priority/<?php echo $item->id; ?>"
                                     class="d-flex" method="post">
                                 <input type="hidden" name="_method" value="patch">
-                                <input style="width: 50px;" class="form-control" type="number" name="prioritet" min="0" value="<?php echo $item->prioritet; ?>">
-                                <button class="btn btn-sm btn-primary" type="submit"><i class="mdi mdi-check"></i></button>
+                                <input style="width: 50px;" class="form-control" type="number" name="prioritet" min="0"
+                                       value="<?php echo $item->prioritet; ?>">
+                                <button class="btn btn-sm btn-primary" type="submit"><i class="mdi mdi-check"></i>
+                                </button>
                             </form>
                         </td>
                         <td><?php echo $item->slug; ?></td>
                         <td>
                             <a class="btn btn-sm rounded-pill btn-primary"
-                               href="/staff/category/<?php echo $item->id; ?>/position">
+                               href="/dashboard/staff/category/<?php echo $item->id; ?>/position">
                                 <i class="mdi mdi-plus"></i> Позиција (<?php echo $item->pozicije; ?>)</a>
                         </td>
                         <td>
-                            <form action="/staff/category/<?php echo $item->id ?>" method="post">
+                            <form action="/dashboard/staff/category/<?php echo $item->id ?>" method="post">
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn-danger"><i class="mdi mdi-delete"></i></button>
                             </form>

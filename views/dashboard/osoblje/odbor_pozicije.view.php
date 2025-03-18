@@ -3,7 +3,7 @@
 <div class="card">
     <div class="card-body">
         <h3>Додај у <?php echo $odbor->odbor; ?></h3>
-        <form action="/staff/category/<?php echo $odbor->id; ?>/position" class="row" method="post">
+        <form action="/dashboard/staff/category/<?php echo $odbor->id; ?>/position" class="row" method="post">
             <div class="row">
                 <div class="col-md-7">
                     <div class="form-group">
@@ -51,16 +51,18 @@
                         <td><?php echo $pozicija->pozicija; ?></td>
                         <td style="width: 1%">
                             <form
-                                    action="/staff/category/position/priority/<?php echo $pozicija->id; ?>"
+                                    action="/dashboard/staff/category/position/priority/<?php echo $pozicija->id; ?>"
                                     class="d-flex" method="post">
                                 <input type="hidden" name="_method" value="patch">
-                                <input style="width: 50px;" class="form-control" type="number" name="prioritet" min="0" value="<?php echo $pozicija->prioritet; ?>">
-                                <button class="btn btn-sm btn-primary" type="submit"><i class="mdi mdi-check"></i></button>
+                                <input style="width: 50px;" class="form-control" type="number" name="prioritet" min="0"
+                                       value="<?php echo $pozicija->prioritet; ?>">
+                                <button class="btn btn-sm btn-primary" type="submit"><i class="mdi mdi-check"></i>
+                                </button>
                             </form>
 
                         </td>
                         <td class="text-end">
-                            <form action="/staff/category/position/<?php echo $pozicija->id;
+                            <form action="/dashboard/staff/category/position/<?php echo $pozicija->id;
                             ?>" method="post">
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn btn-danger"><i class="mdi

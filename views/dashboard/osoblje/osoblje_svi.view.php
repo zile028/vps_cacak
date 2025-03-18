@@ -16,7 +16,7 @@
     <div class="row">
         <!-- Column -->
         <div class="col-md-6 col-lg-2 col-xlg-3">
-            <a href="/staff">
+            <a href="/dashboard/staff">
                 <div class="card card-hover">
                     <div class="box bg-cyan text-center">
                         <h1 class="font-light text-white">
@@ -29,7 +29,7 @@
         </div>
         <!-- Column -->
         <div class="col-md-6 col-lg-2 col-xlg-3">
-            <a href="/staff/add">
+            <a href="/dashboard/staff/add">
                 <div class="card card-hover">
                     <div class="box bg-cyan text-center">
                         <h1 class="font-light text-white">
@@ -102,38 +102,42 @@
                                            target="_blank">CV</a>
                                     <?php endif; ?>
                                     <a class="btn btn-sm rounded-pill btn-primary"
-                                       href="/staff/education/<?php echo $item->id; ?>">
+                                       href="/dashboard/staff/education/<?php echo $item->id; ?>">
                                         <i class="mdi mdi-plus"></i> Образовање</a>
                                 </td>
                                 <td>
                                     <div class="d-flex flex-column">
                                         <?php if ($item->lang === "srb"): ?>
-                                            <a href="/staff/edit/<?php echo $item->id; ?>"><i class="mdi mdi-settings"></i>
+                                            <a href="/dashboard/staff/edit/<?php echo $item->id; ?>"><i
+                                                        class="mdi mdi-settings"></i>
                                                 <img src="/assets/images/srb.svg" alt="">
                                             </a>
                                             <?php if (isset($relation) && array_key_exists("en", $relation)): ?>
-                                                <a href="/staff/edit/<?php echo $item->id; ?>">
+                                                <a href="/dashboard/staff/edit/<?php echo $item->id; ?>">
                                                     <i class="mdi mdi-settings"></i>
                                                     <img src="/assets/images/en.svg" alt="">
                                                 </a>
                                             <?php else: ?>
-                                                <a class="d-flex align-items-center gap-1" href="/staff/add?lang=en&id=<?php echo $relation->srb ?? $item->id; ?>">
+                                                <a class="d-flex align-items-center gap-1"
+                                                   href="/dashboard/staff/add?lang=en&id=<?php echo $relation->srb ?? $item->id; ?>">
                                                     <i class="mdi mdi-plus-box"></i>
                                                     <img src="/assets/images/en.svg" alt="">
                                                 </a>
                                             <?php endif; ?>
 
                                         <?php elseif ($item->lang === "en"): ?>
-                                            <a href="/staff/edit/<?php echo $item->id; ?>"><i class="mdi mdi-settings"></i>
+                                            <a href="/dashboard/staff/edit/<?php echo $item->id; ?>"><i
+                                                        class="mdi mdi-settings"></i>
                                                 <img src="/assets/images/en.svg" alt="">
                                             </a>
                                             <?php if (isset($relation) && array_key_exists("srb", $relation)): ?>
-                                                <a href="/staff/edit/<?php echo $item->id; ?>">
+                                                <a href="/dashboard/staff/edit/<?php echo $item->id; ?>">
                                                     <i class="mdi mdi-settings"></i>
                                                     <img src="/assets/images/srb.svg" alt="">
                                                 </a>
                                             <?php else: ?>
-                                                <a class="d-flex align-items-center gap-1" href="/staff/add?lang=en&id=<?php echo $relation->srb ?? $item->id; ?>">
+                                                <a class="d-flex align-items-center gap-1"
+                                                   href="/dashboard/staff/add?lang=en&id=<?php echo $relation->srb ?? $item->id; ?>">
                                                     <i class="mdi mdi-plus-box"></i>
                                                     <img src="/assets/images/srb.svg" alt="">
                                                 </a>
@@ -143,7 +147,7 @@
                                 </td>
 
                                 <td class="d-flex gap-1">
-                                    <form action="/staff/<?php echo $item->id; ?>"
+                                    <form action="/dashboard/staff/<?php echo $item->id; ?>"
                                           method="post">
                                         <input type="hidden" name="_method" value="delete">
                                         <button class="btn btn-sm btn-danger"><i

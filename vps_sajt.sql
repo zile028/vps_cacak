@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2025 at 03:30 PM
+-- Generation Time: Mar 18, 2025 at 09:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -247,6 +247,20 @@ INSERT INTO `media` (`id`, `fileName`, `storeName`, `type`, `size`, `createdAt`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `obrazovanje_osoblje`
+--
+
+CREATE TABLE `obrazovanje_osoblje` (
+  `id` int(11) NOT NULL,
+  `osobljeID` int(11) NOT NULL,
+  `tema` text NOT NULL,
+  `ustanova` text NOT NULL,
+  `godina` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `odbori`
 --
 
@@ -254,18 +268,41 @@ CREATE TABLE `odbori` (
   `id` int(10) NOT NULL,
   `odbor` varchar(50) NOT NULL,
   `prioritet` int(10) NOT NULL DEFAULT 1,
-  `lang` varchar(5) NOT NULL DEFAULT 'srb'
+  `lang` varchar(5) NOT NULL DEFAULT 'srb',
+  `slug` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `odbori`
 --
 
-INSERT INTO `odbori` (`id`, `odbor`, `prioritet`, `lang`) VALUES
-(1, 'Савет', 1, 'srb'),
-(2, 'Руководство', 1, 'srb'),
-(3, 'Наставно особље', 1, 'srb'),
-(4, 'Ненаставно особље', 1, 'srb');
+INSERT INTO `odbori` (`id`, `odbor`, `prioritet`, `lang`, `slug`) VALUES
+(1, 'Савет', 1, 'srb', 'savet'),
+(2, 'Руководство', 1, 'srb', 'rukovodstvo'),
+(3, 'Наставно особље', 1, 'srb', 'nastavno_osoblje'),
+(4, 'Ненаставно особље', 1, 'srb', 'nenastavno_osoblje');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `odbor_pozicija`
+--
+
+CREATE TABLE `odbor_pozicija` (
+  `id` int(11) NOT NULL,
+  `odborID` int(11) NOT NULL,
+  `prioritet` int(11) NOT NULL,
+  `pozicija` varchar(255) NOT NULL,
+  `lang` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `odbor_pozicija`
+--
+
+INSERT INTO `odbor_pozicija` (`id`, `odborID`, `prioritet`, `pozicija`, `lang`) VALUES
+(1, 1, 2, 'Члан савета школе', 'srb'),
+(2, 1, 1, 'Председник савета школе', 'srb');
 
 -- --------------------------------------------------------
 
@@ -338,62 +375,64 @@ INSERT INTO `osoblje` (`id`, `firstName`, `lastName`, `title`, `rank`, `email`, 
 --
 
 CREATE TABLE `osoblje_odbor` (
+  `id` int(10) NOT NULL,
   `osobljeID` int(10) NOT NULL,
   `odborID` int(10) NOT NULL,
   `pozicija` varchar(50) NOT NULL,
   `prioritet` int(10) NOT NULL DEFAULT 1,
-  `lang` varchar(5) NOT NULL DEFAULT 'srb'
+  `lang` varchar(5) NOT NULL DEFAULT 'srb',
+  `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `osoblje_odbor`
 --
 
-INSERT INTO `osoblje_odbor` (`osobljeID`, `odborID`, `pozicija`, `prioritet`, `lang`) VALUES
-(8, 1, 'Председник', 1, 'srb'),
-(8, 3, 'Професор струковних студија', 2, 'srb'),
-(10, 3, 'Професор струковних студија', 2, 'srb'),
-(13, 3, 'Професор струковних студија', 1, 'srb'),
-(14, 3, 'предавач', 2, 'srb'),
-(16, 3, 'Професор струковних студија', 2, 'srb'),
-(17, 3, 'Професор струковних студија', 2, 'srb'),
-(18, 3, 'Професор струковних студија', 2, 'srb'),
-(19, 3, 'Професор струковних студија', 2, 'srb'),
-(20, 1, 'Председник Савета Школе', 1, 'srb'),
-(20, 2, 'Председник Савета Школе', 1, 'srb'),
-(20, 3, 'Професор струковних студија', 2, 'srb'),
-(21, 3, 'Професор струковних студија', 2, 'srb'),
-(22, 3, 'Наставник страног језика', 2, 'srb'),
-(23, 1, 'Члан Савета школе', 1, 'srb'),
-(23, 3, 'Предавач', 2, 'srb'),
-(24, 2, 'Директор установе', 1, 'srb'),
-(24, 3, 'Професор струковних студија', 2, 'srb'),
-(25, 3, 'Професор струковних студија', 2, 'srb'),
-(26, 3, 'Професор струковних студија', 2, 'srb'),
-(27, 3, 'Предавач', 2, 'srb'),
-(28, 3, 'Професор струковних студија', 2, 'srb'),
-(29, 3, 'Предавач', 2, 'srb'),
-(30, 3, 'Професор струковних студија', 2, 'srb'),
-(31, 3, 'Предавач', 2, 'srb'),
-(32, 3, 'Професор струковних студија', 2, 'srb'),
-(33, 3, 'Професор струковних студија', 2, 'srb'),
-(34, 4, 'Возач (Техничка служба)', 1, 'srb'),
-(35, 1, 'Члан Савета школе', 1, 'srb'),
-(35, 4, 'Аналитичар и благајник', 1, 'srb'),
-(36, 4, 'Пословни секретар', 1, 'srb'),
-(37, 4, 'Студентска служба - референт за студентска питања', 1, 'srb'),
-(38, 4, 'Студентска служба - шеф студентске службе', 1, 'srb'),
-(39, 4, 'Спремачица и кафе куварица', 1, 'srb'),
-(40, 4, 'Администратор рачунарске мреже', 1, 'srb'),
-(41, 4, 'Библиотекар', 1, 'srb'),
-(42, 4, 'Шеф административног особља', 2, 'srb'),
-(45, 3, 'Професор струковних студија', 1, 'srb'),
-(46, 3, 'Професор струковних студија', 1, 'srb'),
-(47, 3, 'Професор струковних студија', 1, 'srb'),
-(48, 3, 'Професор струковних студија', 1, 'srb'),
-(49, 2, 'Правник Школе', 1, 'srb'),
-(49, 4, 'Секретар школе', 1, 'srb'),
-(50, 4, 'Студентска служба - референт за студентска питања', 1, 'srb');
+INSERT INTO `osoblje_odbor` (`id`, `osobljeID`, `odborID`, `pozicija`, `prioritet`, `lang`, `description`) VALUES
+(1, 8, 1, '1', 1, 'srb', NULL),
+(2, 8, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(3, 10, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(4, 13, 3, 'Професор струковних студија', 1, 'srb', NULL),
+(5, 14, 3, 'предавач', 2, 'srb', NULL),
+(6, 16, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(7, 17, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(8, 18, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(9, 19, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(10, 20, 1, '2', 1, 'srb', NULL),
+(11, 20, 2, 'Председник Савета Школе', 1, 'srb', NULL),
+(12, 20, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(13, 21, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(14, 22, 3, 'Наставник страног језика', 2, 'srb', NULL),
+(15, 23, 1, '2', 1, 'srb', NULL),
+(16, 23, 3, 'Предавач', 2, 'srb', NULL),
+(17, 24, 2, 'Директор установе', 1, 'srb', NULL),
+(18, 24, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(19, 25, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(20, 26, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(21, 27, 3, 'Предавач', 2, 'srb', NULL),
+(22, 28, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(23, 29, 3, 'Предавач', 2, 'srb', NULL),
+(24, 30, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(25, 31, 3, 'Предавач', 2, 'srb', NULL),
+(26, 32, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(27, 33, 3, 'Професор струковних студија', 2, 'srb', NULL),
+(28, 34, 4, 'Возач (Техничка служба)', 1, 'srb', NULL),
+(29, 35, 1, '2', 1, 'srb', NULL),
+(30, 35, 4, 'Аналитичар и благајник', 1, 'srb', NULL),
+(31, 36, 4, 'Пословни секретар', 1, 'srb', NULL),
+(32, 37, 4, 'Студентска служба - референт за студентска питања', 1, 'srb', NULL),
+(33, 38, 4, 'Студентска служба - шеф студентске службе', 1, 'srb', NULL),
+(34, 39, 4, 'Спремачица и кафе куварица', 1, 'srb', NULL),
+(35, 40, 4, 'Администратор рачунарске мреже', 1, 'srb', NULL),
+(36, 41, 4, 'Библиотекар', 1, 'srb', NULL),
+(37, 42, 4, 'Шеф административног особља', 2, 'srb', NULL),
+(38, 45, 3, 'Професор струковних студија', 1, 'srb', NULL),
+(39, 46, 3, 'Професор струковних студија', 1, 'srb', NULL),
+(40, 47, 3, 'Професор струковних студија', 1, 'srb', NULL),
+(41, 48, 3, 'Професор струковних студија', 1, 'srb', NULL),
+(42, 49, 2, 'Правник Школе', 1, 'srb', NULL),
+(43, 49, 4, 'Секретар школе', 1, 'srb', NULL),
+(44, 50, 4, 'Студентска служба - референт за студентска питања', 1, 'srb', NULL);
 
 -- --------------------------------------------------------
 
@@ -769,10 +808,23 @@ ALTER TABLE `media`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `obrazovanje_osoblje`
+--
+ALTER TABLE `obrazovanje_osoblje`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `odbori`
 --
 ALTER TABLE `odbori`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `odbor_pozicija`
+--
+ALTER TABLE `odbor_pozicija`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `odborID` (`odborID`);
 
 --
 -- Indexes for table `osoblje`
@@ -784,7 +836,10 @@ ALTER TABLE `osoblje`
 -- Indexes for table `osoblje_odbor`
 --
 ALTER TABLE `osoblje_odbor`
-  ADD PRIMARY KEY (`osobljeID`,`odborID`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `osobljeID` (`osobljeID`),
+  ADD KEY `osobljeID_2` (`osobljeID`),
+  ADD KEY `odborID` (`odborID`);
 
 --
 -- Indexes for table `predmeti`
@@ -871,16 +926,34 @@ ALTER TABLE `media`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
+-- AUTO_INCREMENT for table `obrazovanje_osoblje`
+--
+ALTER TABLE `obrazovanje_osoblje`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `odbori`
 --
 ALTER TABLE `odbori`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `odbor_pozicija`
+--
+ALTER TABLE `odbor_pozicija`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `osoblje`
 --
 ALTER TABLE `osoblje`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `osoblje_odbor`
+--
+ALTER TABLE `osoblje_odbor`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `predmeti`
