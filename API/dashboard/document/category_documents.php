@@ -19,12 +19,23 @@ SELECT m.type, m.*
     WHERE m.type IN ('pdf', 'doc','docx') 
     ORDER BY m.fileName;
 
-SELECT id, title, createdAt FROM dokumenta WHERE parentID = 0
+SELECT id, title, createdAt FROM dokumenta WHERE parentID = 0 AND category = :id;
 
+SELECT k.* FROM kategorije k WHERE k.parent = :id; ;
 ";
+
 $dokumenta = $db->query($sql, ["id" => $id])->find();
 $kategorija = $db->nextRowsetFindOne();
 $media = $db->nextRowsetFind(PDO::FETCH_GROUP);
 $povezan = $db->nextRowsetFind();
+$subcategory = $db->nextRowsetFind();
 
-view("dashboard/dokumenta/kategorija_dokumenta.view", ["dokumenta" => $dokumenta, "kategorija" => $kategorija, "media" => $media, "povezan" => $povezan]);
+view("dashboard/dokumenta/kategorija_dokumenta.view",
+    [
+        "dokumenta" => $dokumenta,
+        "kategorija" => $kategorija,
+        "media" => $media,
+        "povezan" => $povezan,
+        "subcategory" => $subcategory
+
+    ]);

@@ -4,6 +4,18 @@
 
 input, textarea, select {
   border: 1px solid #ccc !important;
+  min-height: 40px;
+  color: #3e5569;
+  line-height: 40px;
+}
+
+.select2-border {
+  border: 1px solid #ccc !important;
+}
+
+.select2-search__field {
+  min-height: unset !important;
+  line-height: 1 !important;
 }
 
 .cursor-pointer {

@@ -6,8 +6,10 @@ $sql = "
     FROM kategorije k 
     WHERE k.parent IS NULL
     ORDER BY k.prioritet;
+SELECT d.attachment FROM dokumenta d;
 ";
 
 $kategorije = $db->query($sql)->find(PDO::FETCH_GROUP);
+$dokumenta = $db->nextRowsetFind(PDO::FETCH_COLUMN);
 
 view("dashboard/dokumenta/index.view", ["kategorije" => $kategorije]);

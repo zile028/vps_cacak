@@ -8,25 +8,38 @@
 
 <div class="card">
     <div class="card-body">
-        <form action="/document/category/<?php echo $kategorija->id; ?>" class="row" method="post">
+        <form action="/dashboard/document/category/<?php echo $kategorija->id; ?>" class="row" method="post">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mb-0">
                         <label for="odbor">Назив</label>
-                        <input class="form-control" type="text" name="title">
+                        <input class="form-control"
+                               type="text" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="subcategory">Подкатегорија</label>
+                        <select id="subcategory" class="form-control" type="text" name="subcategory">
+                            <option value="<?php echo null ?>">Нема подкатегорију</option>
+                            <?php foreach ($subcategory as $category): ?>
+                                <option value="<?php echo $category->id; ?>">
+                                    <span><?php echo $category->category; ?></span>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="form-group">
+                    <div class="form-group mb-0">
                         <label for="attachment">Документ</label>
-                        <div>
-                            <select id="attachment" class="select2 form-select " type="text"
+                        <div class="select2-border">
+                            <select id="attachment" class="select2 form-control" type="text"
                                     name="attachment">
                                 <?php foreach ($media as $type => $files): ?>
                                     <optgroup label="<?php echo $type; ?>">
                                         <?php foreach ($files as $file): ?>
-                                            <option value="<?php echo $file->id; ?>">(<?php echo $file->id; ?>
-                                                ) <?php echo $file->fileName; ?></option>
+                                            <option value="<?php echo $file->id; ?>">
+                                                (<?php echo $file->id; ?>) <?php echo $file->fileName; ?>
+                                            </option>
                                         <?php endforeach; ?>
                                     </optgroup>
                                 <?php endforeach; ?>
@@ -49,7 +62,6 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="col-md d-flex align-items-end">
                     <button class="btn btn-primary form-control mb-3 nowrap" type="submit">ДОДАЈ ДОКУМЕНТ
                     </button>
@@ -75,7 +87,8 @@
             <?php foreach ($dokumenta as $dokument) : ?>
                 <tr>
                     <td>
-                        <a class="" href="/document/edit/<?php echo $dokument->id; ?>"><i class="mdi mdi-settings"></i></a>
+                        <a class="" href="/dashboard/document/edit/<?php echo $dokument->id; ?>"><i
+                                    class="mdi mdi-settings"></i></a>
                         <a href="<?php echo $dokument->storeName; ?>">
                             <?php echo $dokument->title; ?>
                         </a>
@@ -87,7 +100,7 @@
                         <?php if ($dokument->haveChilde): ?>
                             <p>Прво обрисати повезан документ.</p>
                         <?php else: ?>
-                            <?php deleteForm("/document/" . $dokument->id); ?>
+                            <?php deleteForm("/dashboard/document/" . $dokument->id); ?>
                         <?php endif; ?>
                     </td>
                 </tr>

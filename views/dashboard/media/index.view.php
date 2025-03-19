@@ -105,7 +105,7 @@
                                     </li>
                                     <li class="el-item">
                                         <a class="btn default btn-outline el-link btn-warning"
-                                           href="/media/edit/<?php echo $file->id; ?>">
+                                           href="/dashboard/media/edit/<?php echo $file->id; ?>">
                                             <i class="mdi mdi-settings"></i>
                                         </a>
                                     </li>
@@ -119,7 +119,7 @@
 
                                     <?php if (haveRole("admin")): ?>
                                         <li class="el-item">
-                                            <form action="/media/<?php echo $file->id; ?>" method="post">
+                                            <form action="/dashboard/media/<?php echo $file->id; ?>" method="post">
                                                 <input type="hidden" name="_method" value="delete">
                                                 <input type="hidden" name="storeName"
                                                        value="<?php echo $file->storeName; ?>">
