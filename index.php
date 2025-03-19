@@ -50,7 +50,7 @@ spl_autoload_register(static function ($class) {
 require_once base_path("bootstrap.php");
 $router = new Router();
 //$router::$fe_url = $config["fe_url"];
-require_once base_path("dashboard_routes.php");
+require_once base_path("routes.php");
 //require_once base_path("Core/routes.php");
 $method = $_POST["_method"] ?? $_SERVER["REQUEST_METHOD"];
 try {

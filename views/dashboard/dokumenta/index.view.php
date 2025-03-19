@@ -13,7 +13,7 @@
 
     <!-- Column -->
     <div class="col-md-6 col-lg-2 col-xlg-3">
-        <a href="/document/category">
+        <a href="/dashboard/document/category">
             <div class="card card-hover">
                 <div class="box bg-warning text-center">
                     <h1 class="font-light text-white">
@@ -44,7 +44,7 @@
                     <?php foreach ($kategorija as $item): ?>
                         <!-- Column -->
                         <div class="col-md-6 col-lg-2 col-xlg-3">
-                            <a href="/document/category/<?php echo $item->id; ?>">
+                            <a href="/dashboard/document/category/<?php echo $item->id; ?>">
                                 <div class="card card-hover">
                                     <div class="box bg-warning text-center">
                                         <h1 class="font-light text-white">

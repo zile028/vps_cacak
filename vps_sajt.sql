@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2025 at 03:44 PM
+-- Generation Time: Mar 19, 2025 at 08:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -170,21 +170,26 @@ CREATE TABLE `kategorije` (
   `id` int(11) NOT NULL,
   `category` varchar(50) NOT NULL,
   `lang` varchar(5) NOT NULL DEFAULT 'srb',
-  `sekcija` varchar(255) DEFAULT NULL
+  `sekcija` varchar(255) DEFAULT NULL,
+  `prioritet` int(10) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `parent` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kategorije`
 --
 
-INSERT INTO `kategorije` (`id`, `category`, `lang`, `sekcija`) VALUES
-(1, 'Акта', 'srb', 'dokumenta'),
-(2, 'Правилници', 'srb', 'dokumenta'),
-(3, 'Самовредновање', 'srb', 'dokumenta'),
-(6, 'Ценовник', 'srb', 'cenovnik'),
-(7, 'Информатор рада', 'srb', 'dokumenta'),
-(8, 'Акредитација', 'srb', 'dokumenta'),
-(9, 'У процесу акредитације', 'srb', 'dokumenta');
+INSERT INTO `kategorije` (`id`, `category`, `lang`, `sekcija`, `prioritet`, `slug`, `description`, `parent`) VALUES
+(1, 'Акта', 'srb', 'dokumenta', 1, 'akta', '', NULL),
+(2, 'Правилници', 'srb', 'dokumenta', 1, 'pravilnici', '', NULL),
+(3, 'Самовредновање', 'srb', 'dokumenta', 1, 'samovrednovanje', '', NULL),
+(6, 'Ценовник', 'srb', 'cenovnik', 1, 'cenovnik', '', NULL),
+(7, 'Информатор рада', 'srb', 'dokumenta', 1, 'informator_rada', '', NULL),
+(8, 'Акредитација', 'srb', 'dokumenta', 1, 'akreditacija', '', NULL),
+(9, 'У процесу акредитације', 'srb', 'dokumenta', 1, 'akreditacija_proces', '', NULL),
+(12, 'ОСС Акредитација', 'srb', NULL, 1, '', '', 8);
 
 -- --------------------------------------------------------
 
@@ -810,7 +815,8 @@ ALTER TABLE `dokumenta`
 -- Indexes for table `kategorije`
 --
 ALTER TABLE `kategorije`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent` (`parent`);
 
 --
 -- Indexes for table `media`
@@ -928,7 +934,7 @@ ALTER TABLE `dokumenta`
 -- AUTO_INCREMENT for table `kategorije`
 --
 ALTER TABLE `kategorije`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `media`

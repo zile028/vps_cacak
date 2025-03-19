@@ -76,18 +76,22 @@
                         <?php foreach ($zaposleni as $item): ?>
                             <?php $relation = json_decode($item->translate_relation, true) ?? [] ?>
                             <tr>
-                                <td style="width: 30px"><a
-                                            href="/dashboard/osoblje/<?php echo $item->id; ?>">
-                                        <img style="height: 30px; width: 30px; object-fit: cover"
-                                             class="rounded-circle"
-                                             src="<?php empty($item->image) ? uploadPath("avatar.png") :
-                                                 uploadPath($item->image); ?>"
-                                             alt="<?php echo $item->firstName; ?>">
-                                    </a></td>
+                                <td style="width: 50px">
+                                    <div class="d-flex justify-content-between">
+                                        <input class="me-3" type="checkbox" id="<?php echo "fullName" . $item->id; ?>"
+                                               value="<?php echo $item->id ?>" data-lang="<?php echo $item->lang; ?>"
+                                        >
+                                        <a href="/dashboard/osoblje/<?php echo $item->id; ?>">
+                                            <img style="height: 30px; width: 30px; object-fit: cover"
+                                                 class="rounded-circle"
+                                                 src="<?php empty($item->image) ? uploadPath("avatar.png") :
+                                                     uploadPath($item->image); ?>"
+                                                 alt="<?php echo $item->firstName; ?>">
+                                        </a>
+                                    </div>
+                                </td>
                                 <td>
-                                    <input type="checkbox" id="<?php echo "fullName" . $item->id; ?>"
-                                           value="<?php echo $item->id ?>" data-lang="<?php echo $item->lang; ?>"
-                                    >
+
                                     <label for="<?php echo "fullName" . $item->id; ?>">
                                         <?php echo $item->firstName; ?>
                                         <?php echo $item->lastName; ?>
@@ -96,14 +100,16 @@
                                 <td><?php echo $item->rank; ?></td>
                                 <td><?php echo $item->email; ?></td>
                                 <td>
-                                    <?php if (isset($item->cv)): ?>
-                                        <a class="btn btn-sm btn-warning"
-                                           href="<?php uploadPath($item->cv); ?>"
-                                           target="_blank">CV</a>
-                                    <?php endif; ?>
-                                    <a class="btn btn-sm rounded-pill btn-primary"
-                                       href="/dashboard/staff/education/<?php echo $item->id; ?>">
-                                        <i class="mdi mdi-plus"></i> Образовање</a>
+                                    <div style="width: 120px">
+                                        <a class="btn btn-sm rounded-pill btn-primary w-100"
+                                           href="/dashboard/staff/education/<?php echo $item->id; ?>">
+                                            <i class="mdi mdi-plus"></i> Образовање</a>
+                                        <?php if (isset($item->cv)): ?>
+                                            <a class="btn btn-sm btn-warning rounded-pill w-100 mt-1"
+                                               href="<?php uploadPath($item->cv); ?>"
+                                               target="_blank">CV</a>
+                                        <?php endif; ?>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="d-flex flex-column">

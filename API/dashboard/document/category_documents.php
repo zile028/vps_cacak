@@ -17,7 +17,6 @@ SELECT id,category FROM kategorije WHERE id = :id;
 SELECT m.type, m.* 
     FROM media m 
     WHERE m.type IN ('pdf', 'doc','docx') 
-      
     ORDER BY m.fileName;
 
 SELECT id, title, createdAt FROM dokumenta WHERE parentID = 0
@@ -27,6 +26,5 @@ $dokumenta = $db->query($sql, ["id" => $id])->find();
 $kategorija = $db->nextRowsetFindOne();
 $media = $db->nextRowsetFind(PDO::FETCH_GROUP);
 $povezan = $db->nextRowsetFind();
-
 
 view("dashboard/dokumenta/kategorija_dokumenta.view", ["dokumenta" => $dokumenta, "kategorija" => $kategorija, "media" => $media, "povezan" => $povezan]);
