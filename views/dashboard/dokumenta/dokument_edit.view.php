@@ -8,7 +8,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form action="/document/<?php echo $dokument->id; ?>" class="row" method="post">
+        <form action="/dashboard/document/<?php echo $dokument->id; ?>" class="row" method="post">
             <input type="hidden" name="_method" value="patch">
             <div class="row">
                 <div class="col-md-6 offset-md-3">

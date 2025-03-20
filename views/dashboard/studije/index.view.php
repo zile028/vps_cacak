@@ -45,12 +45,12 @@
                         <?php foreach ($program as $index => $sp): ?>
                             <tr id="<?php echo $sp->id; ?>">
                                 <td style="width: 30px">
-                                    <a href="/study/program/<?php echo $sp->id; ?>">
+                                    <a href="/dashboard/study/program/<?php echo $sp->id; ?>">
                                         <?php echo $index + 1; ?>
                                     </a>
                                 </td>
                                 <td class="">
-                                    <a href="/study/program/<?php echo $sp->id; ?>">
+                                    <a href="/dashboard/study/program/<?php echo $sp->id; ?>">
                                         <?php echo $sp->naziv . " " . $sp->modul; ?>
                                     </a>
                                     <p>Broj predmeta: <?php echo $sp->predmetCount; ?></p>
@@ -77,7 +77,7 @@
                                 <td>
                                     <div class="d-flex gap-2">
                                         <a class="btn btn-sm btn-warning"
-                                           href="/study/program/<?php echo $sp->id; ?>"><i
+                                           href="/dashboard/study/program/<?php echo $sp->id; ?>"><i
                                                     class="mdi mdi-wrench"></i></a>
                                         <form action="/study/program/<?php echo $sp->id; ?>"
                                               method="post">

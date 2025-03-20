@@ -17,4 +17,4 @@ $data = $_POST;
 unset($data["_method"]);
 $data["id"] = $params["id"];
 $result = $db->query($sql, $data)->affectedRows();
-redirectBack();
+redirect("/dashboard/study/level");

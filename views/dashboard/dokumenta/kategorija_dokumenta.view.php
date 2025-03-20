@@ -87,8 +87,6 @@
             <?php foreach ($dokumenta as $dokument) : ?>
                 <tr>
                     <td>
-                        <a class="" href="/dashboard/document/edit/<?php echo $dokument->id; ?>"><i
-                                    class="mdi mdi-settings"></i></a>
                         <a href="<?php echo $dokument->storeName; ?>">
                             <?php echo $dokument->title; ?>
                         </a>
@@ -97,14 +95,50 @@
                     <td><?php echo $dokument->fileName; ?></td>
                     <td><?php dateDDMMYYY($dokument->createdAt); ?></td>
                     <td style="width: 10%">
-                        <?php if ($dokument->haveChilde): ?>
-                            <p>Прво обрисати повезан документ.</p>
-                        <?php else: ?>
-                            <?php deleteForm("/dashboard/document/" . $dokument->id); ?>
-                        <?php endif; ?>
+                        <div class="d-flex align-items-center justify-content-center gap-1">
+                            <a class="btn btn-sm btn-warning"
+                               href="/dashboard/document/edit/<?php echo $dokument->id; ?>"><i
+                                        class="mdi mdi-settings"></i></a>
+                            <?php if ($dokument->haveChilde): ?>
+                                <p>Прво обрисати повезан документ.</p>
+                            <?php else: ?>
+                                <?php deleteForm("/dashboard/document/" . $dokument->id); ?>
+                            <?php endif; ?>
+                        </div>
                     </td>
                 </tr>
             <?php endforeach; ?>
+
+            <?php foreach ($subcategoryDocument as $category => $documents) : ?>
+                <tr class="alert alert-dark">
+                    <td colspan="5">Подкатегорија: <?php echo $category; ?></td>
+                </tr>
+                <?php foreach ($documents as $dokument): ?>
+                    <tr>
+                        <td>
+                            <a href="<?php echo $dokument->storeName; ?>">
+                                <?php echo $dokument->title; ?>
+                            </a>
+                        </td>
+                        <td><?php echo $dokument->parent; ?></td>
+                        <td><?php echo $dokument->fileName; ?></td>
+                        <td><?php dateDDMMYYY($dokument->createdAt); ?></td>
+                        <td style="width: 10%">
+                            <div class="d-flex align-items-center justify-content-center gap-1">
+                                <a class="btn btn-sm btn-warning"
+                                   href="/dashboard/document/edit/<?php echo $dokument->id; ?>"><i
+                                            class="mdi mdi-settings"></i></a>
+                                <?php if ($dokument->haveChilde): ?>
+                                    <p>Прво обрисати повезан документ.</p>
+                                <?php else: ?>
+                                    <?php deleteForm("/dashboard/document/" . $dokument->id); ?>
+                                <?php endif; ?>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+
             </tbody>
 
         </table>

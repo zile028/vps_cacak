@@ -42,6 +42,8 @@ $(document).ready(function () {
     $('.select2').select2({
         templateResult: formatOption, templateSelection: formatOption
     });
+
+
     $(".select2[data-image='preview']").on('change', function () {
         let [selected] = $(this).find("option:selected");
         // let selectedValue = $(this).val(); // Dobija selektovanu vrednost

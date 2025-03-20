@@ -20,7 +20,7 @@
                 <div id="flush-collapse" class="accordion-collapse collapse" aria-labelledby="flush-heading"
                      data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        <form class="row p-3" action="/study/level" method="post">
+                        <form class="row p-3" action="/dashboard/study/level" method="post">
                             <div class="col-md-6">
                                 <label for="title">Назив</label>
                                 <input class="form-control" id="title" name="title" type="text">
@@ -66,7 +66,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3">
-                        <img class="img-fluid" src="<?php echo $nivo->image; ?>" alt="">
+                        <img class="img-fluid" src="<?php echo uploadPath($nivo->thumbnail) ?>" alt="">
                     </div>
                     <div class="col-md-9">
                         <div class="row">
@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="card-footer alert alert-primary d-flex justify-content-end">
-                <a class="btn btn-sm btn-warning" href="/study/level/<?php echo $nivo->id; ?>">Edit</a>
+                <a class="btn btn-sm btn-warning" href="/dashboard/study/level/<?php echo $nivo->id; ?>">Edit</a>
             </div>
         <?php endforeach; ?>
     </div>

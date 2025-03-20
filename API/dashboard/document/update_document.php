@@ -16,7 +16,7 @@ try {
     $data = [...$_POST, ...$params];
     $result = $db->query($sql, $data)->affectedRows();
     $category = $db->nextRowsetFindOne(PDO::FETCH_COLUMN);
-    redirect("/document/category/" . $category);
+    redirect("/dashboard/document/category/" . $category);
 } catch (Exception $e) {
     displayErrorPage($e);
 }

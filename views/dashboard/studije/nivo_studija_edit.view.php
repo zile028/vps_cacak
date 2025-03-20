@@ -9,7 +9,7 @@
     <!-- Sales Cards  -->
     <!-- ============================================================== -->
     <div class="card">
-        <form class="row p-3" action="/study/level/<?php echo $nivo->id; ?>" method="post">
+        <form class="row p-3" action="/dashboard/study/level/<?php echo $nivo->id; ?>" method="post">
             <input type="hidden" name="_method" value="patch">
             <div class="col-md-6">
                 <label for="title">Назив</label>
@@ -31,18 +31,31 @@
                 <input class="form-control" id="lvl" name="lvl" type="number" value="<?php echo $nivo->lvl; ?>">
             </div>
             <div class="col-md-12">
-                <label for="description">Опис</label>
-                <?php quillEditor($nivo->description, "description"); ?>
-            </div>
-            <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-2">
-                        <img class="img-fluid" src="<?php echo $nivo->image; ?>" alt="" data-preview="preview">
+                    <div class="col-md-8">
+                        <label for="description">Опис</label>
+                        <?php quillEditor($nivo->description, "description"); ?>
                     </div>
-                    <div class="col-md-10">
-                        <label for="image">Истакнута слика</label><br>
-                        <input class="form-control" type="text" name="image" id="image" data-preview="src" value="<?php echo $nivo->image; ?>">
+                    <div class="col-md-4 flex-grow-1" style="height: 410px;">
+                        <div class="d-flex flex-column h-100">
+                            <div class="col-md-12 mb-3">
+                                <label for="image">Истакнута слика</label><br>
+                                <select class="select2 w-100" name="image" id="image" data-image="preview">
+                                    <?php foreach ($images as $img): ?>
+                                        <option data-storeName="<?php echo uploadPath($img->storeName); ?>"
+                                                value="<?php echo $img->id; ?>"><?php echo $img->fileName; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-12 border border-dark flex-grow-1 mb-3">
+                                <img id="imagePreview" class="img-cover"
+                                     src="<?php echo uploadPath($images[0]->storeName) ?>"
+                                     alt="">
+                            </div>
+
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div class="col-md-4 d-flex flex-column justify-content-end align-items-end">
