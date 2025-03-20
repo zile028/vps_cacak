@@ -9,6 +9,8 @@ $router->get($prefix . "/study/program/add", "dashboard/study/study_program_add.
 $router->get($prefix . "/study/course/:id", "dashboard/study/edit_course_page.php")->only(AUTH);
 $router->get($prefix . "/study/program/:id", "dashboard/study/study_program_index.php")->only(AUTH);
 
+
+$router->post($prefix . "/study/level/add", "dashboard/study/study_level_save.php")->only(AUTH);
 $router->post($prefix . "/study/program/add", "dashboard/study/study_program_save.php")->only(AUTH);
 $router->post($prefix . "/study/course/add", "dashboard/study/save_course.php")->only(AUTH);
 
