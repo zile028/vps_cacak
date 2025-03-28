@@ -24,3 +24,10 @@ const MODERATOR = "moderator";
 const MEDIA_FLASH = "mediaSelect";
 const INPUTS_FLASH = "inputs";
 const ERRORS_FLASH = "error";
+const ERROR_RESPONSE_FLASH = "err_response";
+const RESPONSE_FLASH = "response";
+
+const ADRESA = "11080 Београд, ул. Градски парк 2";
+const TELEFON = "(+381) 11 3771-552";
+const EMAIL = "info@vpscacak.edu.rs";
+const RADNO_VREME = "09:00 - 17:00";

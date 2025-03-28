@@ -16,4 +16,4 @@ $sql = "
 $lastNews = $db->query($sql, ["limit" => $limit, "offset" => $offset], [PDO::PARAM_INT, PDO::PARAM_INT])->find();
 $count = $db->nextRowsetCount();
 
-view("dashboard/vesti/index.view", ["vesti" => $lastNews, "count" => $count, "cbUrl" => "/news"]);
+view("dashboard/vesti/index.view", ["vesti" => $lastNews, "count" => $count, "cbUrl" => "/dashboard/news"]);

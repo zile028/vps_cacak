@@ -178,6 +178,27 @@ function getFlashErrors($key = null)
     }
 }
 
+function showResponse($key, $class = "error_response")
+{
+    if (getFlash($key)) :
+        $error = getFlash($key);
+        echo "<div class='$class'>";
+        echo "<p>$error</p>";
+        echo "</div>";
+    endif;
+}
+
+function showError($key, $class = "error")
+{
+    if (getFlash(ERRORS_FLASH, $key)) :
+        echo "<div class='$class'>";
+        foreach (getFlash(ERRORS_FLASH, $key) as $error):
+            echo "<p>$error</p>";
+        endforeach;
+        echo "</div>";
+    endif;
+}
+
 function isError($key)
 {
     if (Session::has($key)) {
@@ -333,7 +354,7 @@ function buildMenu(array $elements, $parentId = null)
 
 function displayErrorPage($e, $query = true): void
 {
-    view("errors/error_page_message.view", ["error" => $e, "cbUrl" => referer($query)]);
+    view("dashboard/errors/error_page_message.view", ["error" => $e, "cbUrl" => referer($query)]);
 }
 
 function translate($lang, $word)
@@ -349,4 +370,12 @@ function translate($lang, $word)
 
 
     return is_array($result) ? "Error translate" : $result;
+}
+
+function getWidget($name, $lang = "srb")
+{
+    $widgets = \Core\Widget::get($name, $lang);
+    foreach ($widgets as $row) {
+        echo $row->content;
+    }
 }

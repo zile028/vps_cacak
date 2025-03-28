@@ -12,7 +12,7 @@ INSERT INTO upis (title, content, nivoID, lang, prioritet)
 try {
     $data = $_POST;
     $result = $db->query($sql, $data)->findOne();
-    redirect("/admission");
+    redirect("/dashboard/admission");
 } catch (Exception $e) {
     displayErrorPage($e);
 }

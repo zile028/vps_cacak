@@ -16,11 +16,11 @@
         <!-- ============================================================== -->
         <!-- Start Pagination -->
         <!-- ============================================================== -->
-        <?php view("partials/pagination", ["count" => $count, "cbUrl" => $cbUrl]) ?>
+        <?php view("dashboard/partials/pagination", ["count" => $count, "cbUrl" => $cbUrl]) ?>
         <!-- ============================================================== -->
         <!-- End Pagination -->
         <!-- ============================================================== -->
-        <form action="/news" class="d-flex align-items-center">
+        <form action="/dashboard/news" class="d-flex align-items-center">
             <label class="m-0 me-2" for="search">Претрага</label>
             <input id="search" class="form-control" type="text" name="search">
         </form>
@@ -50,7 +50,7 @@
                     <?php foreach ($vesti as $item): ?>
                         <tr>
                             <td style="width: 30px"><a
-                                        href="/news/edit/<?php echo $item->id; ?>">
+                                        href="/dashboard/news/edit/<?php echo $item->id; ?>">
                                     <img style="height: 30px; width: 30px; object-fit: cover"
                                          class="rounded-circle"
                                          src="
@@ -59,12 +59,12 @@
                                          alt="<?php echo $item->fileName; ?>">
                                 </a></td>
                             <td>
-                                <a href="/news/edit/<?php echo $item->id; ?>"><?php echo $item->naslov; ?></a>
+                                <a href="/dashboard/news/edit/<?php echo $item->id; ?>"><?php echo $item->naslov; ?></a>
                             </td>
                             <td><?php echo getExcerpt($item->description); ?></td>
                             <td>
                                 <?php if (haveRole(ADMIN)): ?>
-                                    <?php updateSingle("/news/publish/" . $item->id, "createdAt", dateForInput($item->createdAt, "Y-m-d"), "date"); ?>
+                                    <?php updateSingle("/dashboard/news/publish/" . $item->id, "createdAt", dateForInput($item->createdAt, "Y-m-d"), "date"); ?>
                                 <?php else: ?>
                                     <?php dateDDMMYYY($item->createdAt); ?>
                                 <?php endif; ?>
@@ -72,35 +72,37 @@
                             <td>
                                 <?php $relation = json_decode($item->translate_relation, true) ?? []; ?>
                                 <?php if ($item->lang === "srb"): ?>
-                                    <a href="/news/edit/<?php echo $item->id; ?>"><i class="mdi mdi-settings"></i>
+                                    <a href="/dashboard/news/edit/<?php echo $item->id; ?>"><i
+                                                class="mdi mdi-settings"></i>
                                         <img src="/assets/images/srb.svg" alt="">
                                     </a>
                                     <?php if (isset($relation) && array_key_exists("en", $relation)): ?>
                                         <a class="d-flex align-items-center gap-1"
-                                           href="/news/edit/<?php echo $relation["en"]; ?>">
+                                           href="/dashboard/news/edit/<?php echo $relation["en"]; ?>">
                                             <i class="mdi mdi-settings"></i>
                                             <img src="/assets/images/en.svg" alt="">
                                         </a>
                                     <?php else: ?>
                                         <a class="d-flex align-items-center gap-1"
-                                           href="/news/add?lang=en&id=<?php echo $relation->srb ?? $item->id; ?>">
+                                           href="/dashboard/news/add?lang=en&id=<?php echo $relation->srb ?? $item->id; ?>">
                                             <i class="mdi mdi-plus-box"></i>
                                             <img src="/assets/images/en.svg" alt="">
                                         </a>
                                     <?php endif; ?>
                                 <?php elseif ($item->lang === "en"): ?>
-                                    <a href="/news/edit/<?php echo $item->id; ?>"><i class="mdi mdi-settings"></i>
+                                    <a href="/dashboard/news/edit/<?php echo $item->id; ?>"><i
+                                                class="mdi mdi-settings"></i>
                                         <img src="/assets/images/en.svg" alt="">
                                     </a>
                                     <?php if (isset($relation) && array_key_exists("srb", $relation)): ?>
                                         <a class="d-flex align-items-center gap-1"
-                                           href="/news/edit/<?php echo $relation["srb"]; ?>"><i
+                                           href="/dashboard/news/edit/<?php echo $relation["srb"]; ?>"><i
                                                     class="mdi mdi-settings"></i>
                                             <img src="/assets/images/srb.svg" alt="">
                                         </a>
                                     <?php else: ?>
                                         <a class="d-flex align-items-center gap-1"
-                                           href="/news/add?lang=en&id=<?php echo $relation->en ?? $item->id; ?>"><i
+                                           href="/dashboard/news/add?lang=en&id=<?php echo $relation->en ?? $item->id; ?>"><i
                                                     class="mdi mdi-plus-box"></i>
                                             <img src="/assets/images/srb.svg" alt="">
                                         </a>
@@ -110,7 +112,7 @@
                             </td>
 
                             <td class="">
-                                <form action="/news/<?php echo $item->id; ?>"
+                                <form action="/dashboard/news/<?php echo $item->id; ?>"
                                       method="post">
                                     <input type="hidden" name="_method" value="delete">
                                     <input type="hidden" name="translate_relation"
@@ -121,7 +123,7 @@
                                 </form>
                                 <?php foreach ($relation as $lang => $vestID): ?>
                                     <?php if ($item->lang !== $lang): ?>
-                                        <form class="mt-2" action="/news/<?php echo $vestID; ?>"
+                                        <form class="mt-2" action="/dashboard/news/<?php echo $vestID; ?>"
                                               method="post">
                                             <input type="hidden" name="_method" value="delete">
                                             <input type="hidden" name="translate_relation"

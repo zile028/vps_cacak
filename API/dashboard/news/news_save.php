@@ -53,4 +53,4 @@ $data = array_values($lastId);
 array_unshift($data, $relation);
 $result = $db->query($sql, $data)->find();
 
-redirect("/news");
+redirect("/dashboard/news");

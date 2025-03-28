@@ -1,0 +1,230 @@
+h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    @media (max-width: 420px) {
+        font-size: 2.8rem;
+
+    }
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 2rem;
+    @media (max-width: 420px) {
+        font-size: 1.8rem;
+
+    }
+}
+
+h3 {
+    text-transform: uppercase;
+    font-size: 1.7rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.3rem;
+}
+
+h6 {
+    font-size: 1.1rem;
+}
+
+.boxShadow {
+    box-shadow: 0 0 3px $black;
+}
+
+input,
+select,
+textarea {
+    padding: 15px 10px;
+
+    &::placeholder {
+        font-family: $textFont;
+        font-size: 1rem;
+    }
+}
+
+hgroup {
+    text-align: center;
+    padding: 50px 0;
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: $orange;
+    }
+}
+
+.title-section {
+    text-align: center;
+    margin-bottom: 40px;
+
+    h2 {
+        text-transform: uppercase;
+
+        &:after {
+            content: "";
+            display: block;
+            height: 6px;
+            width: 50px;
+            background-color: $primary;
+            border-radius: 3px;
+            margin: 10px auto;
+        }
+    }
+}
+
+.btn {
+    background-color: $primary;
+    padding: 1em 2.5em;
+    text-transform: uppercase;
+    color: $white;
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-block;
+    transition: all $transition;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+    &-sm {
+        padding: .5em 1.5em;
+    }
+
+    &:hover {
+        background-color: $darkPrimary !important;
+    }
+}
+
+.card {
+    border: 1px solid $lightGray;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &.row {
+        @include flex;
+        margin-bottom: 30px;
+        text-align: right;
+
+        .card-header {
+            padding: 20px;
+        }
+
+        &:nth-child(even) {
+            background-color: $lightGray;
+
+
+            .card-header, img {
+                order: 1;
+                @media (max-width: 768px) {
+                    order: unset;
+                }
+            }
+
+            .card-body {
+                text-align: left;
+            }
+        }
+
+        img {
+            max-width: 320px;
+            @media (max-width: 768px) {
+                max-width: unset;
+            }
+        }
+
+        .card-body {
+            flex: 1;
+        }
+    }
+
+    img {
+        width: 100%;
+    }
+
+    &-body {
+        padding: 10px;
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        &_group {
+            flex-grow: 1;
+
+        }
+
+        div {
+            @include flex($y: center);
+            font-size: 0.9rem;
+            //color: $gray;
+        }
+
+        h6 {
+            line-height: 1.3;
+            font-size: 1rem;
+        }
+
+        .btn {
+            margin-top: 20px;
+        }
+    }
+
+    &-header {
+        text-transform: uppercase;
+        padding: 10px;
+        border-bottom: 1px solid $lightGray;
+        background-color: $lightGray;
+    }
+
+    &-footer {
+        border-top: 1px solid $lightGray;
+        padding: 10px;
+    }
+}
+
+.listFlush {
+    list-style: none;
+
+    li {
+        border-bottom: 1px solid $lightGray;
+        padding: 5px 0;
+
+        span {
+            &:first-child {
+                font-weight: 600;
+            }
+        }
+
+        span {
+
+        }
+    }
+}
+
+.listGroup {
+    li {
+        color: $black;
+
+        &:before {
+            content: "\f0a4";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #233785;
+            margin-right: 5px;
+        }
+    }
+}

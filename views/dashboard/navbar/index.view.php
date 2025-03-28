@@ -3,7 +3,7 @@
 <div class="card p-2">
     <h2>Navbar</h2>
     <div>
-        <form action="/navbar" class="row" method="post">
+        <form action="/dashboard/navbar" class="row" method="post">
             <div class="col-md-6 form-group">
                 <label for="caption">Caption</label>
                 <input id="caption" name="caption" type="text" class="form-control">
@@ -57,8 +57,8 @@
 
 <div class="card p-2">
     <div>
-        <a href="/navbar?lang=srb"><img src="/assets/images/srb.svg" alt=""></a>
-        <a href="/navbar?lang=en"><img src="/assets/images/en.svg" alt=""></a>
+        <a href="/dashboard/navbar?lang=srb"><img src="/assets/images/srb.svg" alt=""></a>
+        <a href="/dashboard/navbar?lang=en"><img src="/assets/images/en.svg" alt=""></a>
     </div>
 </div>
 <div class="card p-2">

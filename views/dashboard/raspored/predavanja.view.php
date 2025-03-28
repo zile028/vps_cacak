@@ -6,7 +6,7 @@
     <!-- ============================================================== -->
     <h4 class="text-uppercase">РАСПОРЕД - <?php echo $kategorija->kategorija; ?></h4>
     <div class="card">
-        <form action="/schedule/<?php echo $kategorija->id; ?>/<?php echo $lang; ?>"
+        <form action="/dashboard/schedule/<?php echo $kategorija->id; ?>/<?php echo $lang; ?>"
               class="card-body row align-items-end" method="post">
             <!-- STUDIJSKI PROGRAM-->
             <div class="col-lg-4 col-md-12 flex-grow-1">

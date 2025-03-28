@@ -16,3 +16,4 @@ SELECT * FROM media m WHERE m.mimetype LIKE '%image%';
 $nivoiStudija = $db->query($sql)->find(PDO::FETCH_GROUP);
 $images = $db->nextRowsetFind();
 view("dashboard/studije/nivo_studija.view", ["nivoiStudija" => $nivoiStudija, "images" => $images]);
+\Core\Session::unflash();

@@ -27,11 +27,13 @@
     <!-- Start form -->
     <!-- ============================================================== -->
     <div class="card">
-        <form class="card-body" action="/news/edit/<?php echo $vest->id; ?>" method="post" enctype="multipart/form-data">
+        <form class="card-body" action="/dashboard/news/edit/<?php echo $vest->id; ?>" method="post"
+              enctype="multipart/form-data">
             <input type="hidden" name="_method" value="patch">
             <div class="row">
                 <div class="col-12">
-                    <h4><img class="me-2" src="/assets/images/<?php echo $vest->lang; ?>.svg" alt=""><?php echo $vest->lang === "srb" ? "Српски" : "Енглески"; ?></h4>
+                    <h4><img class="me-2" src="/assets/images/<?php echo $vest->lang; ?>.svg"
+                             alt=""><?php echo $vest->lang === "srb" ? "Српски" : "Енглески"; ?></h4>
                     <div class="card">
                         <div class="form-group flex-lg-grow-1 col-sm">
                             <label for="fname" class="control-label col-form-label">Наслов</label>

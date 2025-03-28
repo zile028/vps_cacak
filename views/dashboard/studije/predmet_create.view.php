@@ -9,8 +9,7 @@
 <!-- End PAge Content -->
 <!-- ============================================================== -->
 <div class="card">
-    <form class="form-horizontal" action="/study/course/add" method="post"
-          enctype="multipart/form-data">
+    <form class="form-horizontal" action="/dashboard/study/course/add" method="post">
         <div class="card-body">
             <div class="form-group row">
                 <label for="predmet" class="col-sm-3 text-end control-label
@@ -93,25 +92,30 @@
                     />
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <div class="offset-sm-3 col ">
-                <label class="btn btn-warning" for="nastavniPlan">Наставни план</label>
-                <input type="file" class="d-none" name="nastavniPlan" accept="application/pdf"
-                       id="nastavniPlan">
-            </div>
-
-
-            <div class="row border-top">
-
-                <div class="col-sm-9 offset-sm-3">
-                    <div class="card-body">
-                        <button type="submit" class="btn btn-primary">
-                            ДОДАЈ
-                        </button>
+            <div class="form-group row align-items-center">
+                <label class="col-sm-3 text-end" for="nastavniPlan">Наставни план</label>
+                <div class="col-sm-9">
+                    <div class="select2-border">
+                        <select class="select2" id="nastavniPlan" name="nastavniPlan">
+                            <option value="<?php echo null; ?>" selected>Нема наставни план</option>
+                            <?php foreach ($nastavniPlanovi as $plan): ?>
+                                <option value="<?php echo $plan->id; ?>"><?php echo $plan->fileName; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row border-top">
+
+            <div class="col-sm-9 offset-sm-3">
+                <div class="card-body">
+                    <button type="submit" class="btn btn-primary">
+                        ДОДАЈ
+                    </button>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 <!--  -->

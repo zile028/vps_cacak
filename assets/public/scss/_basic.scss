@@ -1,0 +1,127 @@
+// RESET STYLE
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// BASIC STYLE
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $textFont;
+    line-height: 1.5;
+    font-size: $fontSize;
+    font-weight: 400;
+    color: $darkGray;
+    min-width: 320px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $headings;
+    font-weight: 700;
+}
+
+input {
+    font-family: $textFont;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color $transition;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+img {
+    object-fit: cover;
+    display: block;
+}
+
+.py {
+    padding: $py;
+    @media (max-width: 768px) {
+        padding: 30px 0;
+    }
+}
+
+.m {
+    &-t {
+        &1 {
+            margin-top: 3rem;
+        }
+    }
+}
+
+.container-fluid {
+    width: 90%;
+    margin: 0 auto;
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+}
+
+.container {
+    max-width: $containerWidth;
+    margin: 0 auto;
+    width: 90%;
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+}
+
+.error {
+    //background-color: rgba(254, 0, 0, 0.3);
+    padding: 5px;
+    margin-top: 3px;
+    border-radius: 5px;
+    color: rgba(255, 0, 0, 1);
+
+    &_response {
+        background-color: rgba(255, 0, 0, 0.3);
+        padding: 5px;
+        margin-top: 3px;
+        border-radius: 5px;
+        color: $black;
+    }
+}
+
+
+.success {
+    background-color: rgba(0, 255, 0, 0.3);
+    padding: 5px;
+    margin-top: 3px;
+    border-radius: 5px;
+    color: $black;
+
+}
+
+.form {
+    &-group {
+        display: flex;
+        flex-direction: column;
+
+
+    }
+
+
+    &-submit {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+}

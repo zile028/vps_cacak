@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - lts/*
+
+cache: false
+
+addons:
+  browserstack:
+    username: "cyrlat1haGtQ"
+    access_key:
+      secure: "cpSeKTpvsZuRsuxE06JEtNMvGUcQVw/x2GFqn1f8O0beYEsU9z9g02DFiuOkE+RKVOrI2aO4IkQRT//5y8L8467we4OhFPxpJZpOqCqzinPmOs4HgFgyghwc6d2IF0fQNmvcuFpDrMV8yuVpo/11PP6oxSGzdBsmJP1ZIGSoKvs="

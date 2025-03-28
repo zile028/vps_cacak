@@ -68,7 +68,7 @@ function buildMenuTable(array $elements, $parents): string
         $isDrop = $element['drop'] ? "checked" : "";
         $parentsSelect = "<select class='form-control' name='parent' id='parent'>
                             <option value='null'>No parent</option>";
-        $deleteBtn = deleteFormTable("/navbar/" . $element["id"]);
+        $deleteBtn = deleteFormTable("/dashboard/navbar/" . $element["id"]);
         foreach ($parents as $parent):
             $isSelected = $parent["id"] === $element["parent"] ? "selected" : null;
             $to = $parent["to"] ? " - " . $parent["to"] : "";
@@ -79,7 +79,7 @@ function buildMenuTable(array $elements, $parents): string
         $parentsSelect .= "</select>";
         $branch .= "
                         <tr>
-                    <form action='/navbar/{$element["id"]}' method='post' class='row'>
+                    <form action='/dashboard/navbar/{$element["id"]}' method='post' class='row'>
                             <td class='col-4'>
                             <input class='form-control' style='padding-left: {$indent}px' type='text' value='{$element['caption']}' name='caption'>
                             </td>

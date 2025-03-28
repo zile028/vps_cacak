@@ -61,7 +61,7 @@
                                 <td><?php echo $sp->lang; ?></td>
                                 <td>
                                     <form
-                                            action="/study/active/<?php echo $sp->id; ?>"
+                                            action="/dashboard/study/active/<?php echo $sp->id; ?>"
                                             method="post"
                                     >
                                         <input type="hidden" name="_method" value="patch">
@@ -79,7 +79,7 @@
                                         <a class="btn btn-sm btn-warning"
                                            href="/dashboard/study/program/<?php echo $sp->id; ?>"><i
                                                     class="mdi mdi-wrench"></i></a>
-                                        <form action="/study/program/<?php echo $sp->id; ?>"
+                                        <form action="/dashboard/study/program/<?php echo $sp->id; ?>"
                                               method="post">
                                             <input type="hidden" name="_method" value="delete">
                                             <button class="btn btn-sm btn-danger"><i

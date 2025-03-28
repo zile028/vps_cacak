@@ -13,7 +13,7 @@
             <?php foreach ($kategorija as $item): ?>
                 <!-- Column -->
                 <div class="col-md-4 col-lg-4 col-xlg-3 col-sm-12">
-                    <a href="/schedule/<?php echo $item->id; ?>/<?php echo $lang; ?>">
+                    <a href="/dashboard/schedule/<?php echo $item->id; ?>/<?php echo $lang; ?>">
                         <div class="card card-hover">
                             <div class="box bg-cyan text-center">
                                 <h1 class="font-light text-white">

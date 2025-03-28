@@ -61,20 +61,21 @@
                             <td class=""><?php echo $predmet->vezbe; ?></td>
                             <td class=""><?php echo $predmet->espb; ?></td>
                             <td class="text-center">
-                                <?php if (isset($predmet->nastavniPlan)): ?>
+                                <?php if (isset($predmet->plan)): ?>
                                     <a class="btn btn-sm btn-success text-white" target="_blank"
                                        href="<?php uploadPath
-                                       ($predmet->nastavniPlan); ?>"><i
+                                       ($predmet->plan); ?>"><i
                                                 class="mdi mdi-file-multiple"
                                         ></i></a>
                                 <?php endif; ?>
                             </td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a class="btn btn-sm btn-warning" href="/study/course/<?php echo $predmet->id; ?>">
+                                    <a class="btn btn-sm btn-warning"
+                                       href="/dashboard/study/course/<?php echo $predmet->id; ?>">
                                         <i class="mdi mdi-settings"></i>
                                     </a>
-                                    <form action="/study/course/<?php echo $predmet->id ?>"
+                                    <form action="/dashboard/study/course/<?php echo $predmet->id ?>"
                                           method="post">
                                         <input type="hidden" name="_method" value="delete">
                                         <button class="btn btn-sm btn-danger"><i

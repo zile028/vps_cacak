@@ -6,12 +6,12 @@
 <div class="card p-2">
     <div class="d-flex justify-content-between align-content-center">
         <h2>Create wdget</h2>
-        <a class="btn btn-primary d-flex justify-content-center align-items-center" href="/widget">
+        <a class="btn btn-primary d-flex justify-content-center align-items-center" href="/dashboard/widget">
             <i class="mdi mdi-backspace font-24 lh-1"></i></a>
     </div>
 </div>
 <div class="card p-2">
-    <form id="widgetCreate" action="widget/create" method="post" class="row">
+    <form id="widgetCreate" action="/dashboard/widget/create" method="post" class="row">
         <div class="col-md-3">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -51,22 +51,27 @@
         <div class="col-md-6 mt-3">
             <div class="form-group" data-type="content">
                 <label for="content">Content</label>
-                <div class='mb-3 flex-column' data-editor='quillEditor' data-editor-type="wysiwyg" style="display: none">
+                <div class='mb-3 flex-column' data-editor='quillEditor' data-editor-type="wysiwyg"
+                     style="display: none">
                     <div class='col-12'>
                         <!-- Create the editor container -->
                         <div data-editor='container' style='height: 300px'></div>
                     </div>
-                    <textarea id="content" name='content[wysiwyg]' style='display: none; width: 100%; min-height: 300px; resize: none; padding: 12px 15px' class='flex-grow-1' data-editor='content'></textarea>
+                    <textarea id="content" name='content[wysiwyg]'
+                              style='display: none; width: 100%; min-height: 300px; resize: none; padding: 12px 15px'
+                              class='flex-grow-1' data-editor='content'></textarea>
                 </div>
                 <div data-editor-type="html">
-                    <textarea name="content[html]" class="form-control" id="content" data-type="html" cols="30" rows="10"></textarea>
+                    <textarea name="content[html]" class="form-control" id="content" data-type="html" cols="30"
+                              rows="10"></textarea>
                 </div>
             </div>
         </div>
         <div class="col-md-6 my-3">
             <div class="form-group h-100 d-flex flex-column justify-content-between">
                 <label for="settings">Settings as JSON</label>
-                <textarea class="form-control flex-grow-1" style="resize: none" id="settings" name="settings" cols="30"></textarea>
+                <textarea class="form-control flex-grow-1" style="resize: none" id="settings" name="settings"
+                          cols="30"></textarea>
             </div>
         </div>
         <div class="col-md-3 offset-md-9 text-end">

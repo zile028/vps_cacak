@@ -9,7 +9,7 @@
     <!-- End PAge Content -->
     <!-- ============================================================== -->
     <div class="card">
-        <form class="form-horizontal" action="/study/program/add" method="post"
+        <form class="form-horizontal" action="/dashboard/study/program/add" method="post"
               enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
@@ -155,152 +155,151 @@
                         </div>
                     </div>
                 </div>
+                <?php if (isset($nivoStudija["en"])): ?>
+                    <div class="col-md-6">
+                        <h4>Engleski</h4>
+                        <hr>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="nivo"
+                                       class="col-sm-3 text-end d-lg-none">Ниво:</label>
+                                <div class="col">
+                                    <select id="nivo" class="form-control" name="en[nivoID]">
+                                        <?php foreach ($nivoStudija["en"] as $nivo) : ?>
+                                            <option
+                                                    value="<?php echo $nivo->id; ?>"
+                                            >
+                                                <?php echo $nivo->title; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
 
-
-                <div class="col-md-6">
-                    <h4>Engleski</h4>
-                    <hr>
-                    <div class="card-body">
-                        <div class="form-group row">
-                            <label for="nivo"
-                                   class="col-sm-3 text-end d-lg-none">Ниво:</label>
-                            <div class="col">
-                                <select id="nivo" class="form-control" name="en[nivoID]">
-                                    <?php foreach ($nivoStudija["en"] as $nivo) : ?>
-                                        <option
-                                                value="<?php echo $nivo->id; ?>"
-                                        >
-                                            <?php echo $nivo->title; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="fname" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="fname" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">Назив</label>
-                            <div class="col">
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        id="fname"
-                                        placeholder="Назив"
-                                        name="en[naziv]"
-                                />
+                                <div class="col">
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="fname"
+                                            placeholder="Назив"
+                                            name="en[naziv]"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="modul" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="modul" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">Модул</label>
-                            <div class="col">
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        id="modul"
-                                        placeholder="Модул"
-                                        name="en[modul]"
-                                />
+                                <div class="col">
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="modul"
+                                            placeholder="Модул"
+                                            name="en[modul]"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="trajanje" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="trajanje" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">Трајање (година)</label>
-                            <div class="col">
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        id="trajanje"
-                                        placeholder="Трајање (година)"
-                                        name="en[trajanje]"
-                                />
+                                <div class="col">
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="trajanje"
+                                            placeholder="Трајање (година)"
+                                            name="en[trajanje]"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="espb" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="espb" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">ЕСПБ</label>
-                            <div class="col">
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        id="espb"
-                                        placeholder="ЕСПБ"
-                                        name="en[espb]"
-                                />
+                                <div class="col">
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="espb"
+                                            placeholder="ЕСПБ"
+                                            name="en[espb]"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="zvanje" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="zvanje" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">Звање</label>
-                            <div class="col">
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        id="zvanje"
-                                        placeholder="Звање"
-                                        name="en[zvanje]"
-                                />
+                                <div class="col">
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="zvanje"
+                                            placeholder="Звање"
+                                            name="en[zvanje]"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="polje" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="polje" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">Образовно поље</label>
-                            <div class="col">
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        id="polje"
-                                        placeholder="Образовно поље"
-                                        name="en[polje]"
-                                />
+                                <div class="col">
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="polje"
+                                            placeholder="Образовно поље"
+                                            name="en[polje]"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="akreditovan" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="akreditovan" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">Година акредитације</label>
-                            <div class="col">
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        id="akreditovan"
-                                        placeholder="Година акредитације"
-                                        name="en[akreditovan]"
-                                />
+                                <div class="col">
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="akreditovan"
+                                            placeholder="Година акредитације"
+                                            name="en[akreditovan]"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="cilj" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="cilj" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">Циљ</label>
-                            <div class="col">
-                                <?php quillEditor(null, "en[cilj]"); ?>
+                                <div class="col">
+                                    <?php quillEditor(null, "en[cilj]"); ?>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="opis" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="opis" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">Опис</label>
-                            <div class="col">
-                                <?php quillEditor(null, "en[opis]"); ?>
+                                <div class="col">
+                                    <?php quillEditor(null, "en[opis]"); ?>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="ishod" class="col-sm-3 d-lg-none text-end control-label
+                            <div class="form-group row">
+                                <label for="ishod" class="col-sm-3 d-lg-none text-end control-label
                     col-form-label">Исход</label>
-                            <div class="col">
-                                <?php quillEditor(null, "en[ishod]"); ?>
+                                <div class="col">
+                                    <?php quillEditor(null, "en[ishod]"); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                <?php endif; ?>
             </div>
             <div class="row border-top">
                 <div class="col-12">

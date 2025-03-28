@@ -144,7 +144,7 @@ class Validation
     public static function number($value, int $min, $max = INF)
     {
         $value = (float)self::sanitizeString($value);
-        return $value >= $min && $value <= $max;
+        return $value >= $min && $value <= $max ? $value : false;
     }
 
     public static function html($value)
@@ -156,6 +156,21 @@ class Validation
         libxml_clear_errors();
         return empty($errors) ? false : $value;
 
+    }
+
+    public function jmbg($value)
+    {
+        $value = self::sanitizeString($value);
+        if (strlen($value) !== 13) return false;
+        $jmbg = str_split($value);
+        $sum = 0;
+        for ($i = 0; $i < 5; $i++) {
+            if (!is_numeric($jmbg[$i]) || !is_numeric($jmbg[11 - $i])) return false;
+            $sum += ((int)$jmbg[$i] + (int)$jmbg[11 - $i]) * 7 - $i;
+        }
+        $controlNumber = (11 - $sum % 11);
+        $check = $controlNumber === 11 || $controlNumber === 10 ? 0 : $controlNumber;
+        return (int)$jmbg[12] === $check ? $value : false;
     }
 
     public function validate($field, $rule, $errorMessage, ...$props)

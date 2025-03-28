@@ -19,28 +19,16 @@ if (!Validator::string($sifra)) {
 if (!Validator::string($espb)) {
     $error["espb"] = "Број ЕСПБ је обавезан!";
 }
-if ($_FILES["nastavniPlan"]["size"] > 0) {
-    $file = new FileValidator($_FILES["nastavniPlan"]);
-    $file->setValidType(["pdf"]);
-    $file->setLimit(20, "mb");
-    if ($file->isValid() && $file->upload()) {
-        $data["nastavniPlan"] = $file->storeName;
-    } else {
-        $data["nastavniPlan"] = null;
-    }
-} else {
-    $data["nastavniPlan"] = null;
-}
+$data["nastavniPlan"] = $data["nastavniPlan"] === "" ? null : $data["nastavniPlan"];
 
 if (count($error) === 0) {
-
     $db = App::resolve(Database::class);
     $sqlPredmet = "INSERT INTO predmeti (predmet, sifra, predavanja, vezbe, espb, nastavniPlan, lang) 
                 VALUES (:predmet, :sifra, :predavanje, :vezbe, :espb, :nastavniPlan,:lang)";
     $predmetID = $db->query($sqlPredmet, $data)->lastID();
 //    $sqlPredmetSP = "INSERT INTO sp_predmet (spID, predmetID) VALUES (:spID, :predmetID)";
 
-    redirect("/study/course/add");
+    redirect("/dashboard/study/course/add");
 } else {
     view("dashboard/studije/predmet_create.view");
 }

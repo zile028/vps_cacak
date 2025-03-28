@@ -19,7 +19,7 @@ $sql = "
 
 try {
     $result = $db->query($sql, $data)->affectedRows();
-    redirect("/admission#" . $data["id"]);
+    redirect("/dashboard/admission#" . $data["id"]);
 } catch (Exception $e) {
     displayErrorPage($e);
 }

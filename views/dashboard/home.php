@@ -64,6 +64,19 @@
         </div>
         <!-- Column -->
         <div class="col-md-6 col-lg-2 col-xlg-3">
+            <a href="/dashboard/alumni">
+                <div class="card card-hover">
+                    <div class="box bg-danger text-center">
+                        <h1 class="font-light text-white">
+                            <i class="mdi mdi-blur-linear"></i>
+                        </h1>
+                        <h6 class="text-white">АЛУМНИ</h6>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Column -->
+        <div class="col-md-6 col-lg-2 col-xlg-3">
             <a href="/dashboard/news">
                 <div class="card card-hover">
                     <div class="box bg-info text-center">
@@ -153,6 +166,7 @@
                 </div>
             </a>
         </div>
+
         <?php if (\Core\Session::currentUser("role") === ADMIN): ?>
             <!-- Column -->
             <div class="col-md-6 col-lg-2 col-xlg-3">

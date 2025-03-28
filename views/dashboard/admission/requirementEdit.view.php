@@ -3,13 +3,13 @@
 <div class="card p-2">
     <div class="d-flex justify-content-between align-content-center">
         <h2>Упис/Измена</h2>
-        <a class="btn btn-primary d-flex justify-content-center align-items-center" href="/admission">
+        <a class="btn btn-primary d-flex justify-content-center align-items-center" href="/dashboard/admission">
             <i class="mdi mdi-backspace font-24 lh-1"></i></a>
     </div>
 </div>
 
 <div class="card p-2">
-    <form action="/admission/requirement/<?php echo $uslov->id; ?>" class="row" method="post">
+    <form action="/dashboard/admission/requirement/<?php echo $uslov->id; ?>" class="row" method="post">
         <input type="hidden" name="_method" value="patch">
         <input type="hidden" name="lang" value="<?php echo $uslov->lang; ?>">
         <div class="d-flex flex-column col-md-6">

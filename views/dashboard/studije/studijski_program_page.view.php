@@ -8,7 +8,7 @@
     <!-- ============================================================== -->
     <!-- End PAge Content -->
     <!-- ============================================================== -->
-    <form action="/study/program/<?php echo $sp->id; ?>" method="post">
+    <form action="/dashboard/study/program/<?php echo $sp->id; ?>" method="post">
         <input type="hidden" name="_method" value="put">
         <div class="card container-fluid">
             <div class="card-body">
@@ -168,7 +168,7 @@
     <div class="card">
         <div class="card-body">
             <h6>Додај предмет</h6>
-            <form id="addForm" action="/study/program/<?php echo $sp->id; ?>/course" class="row"
+            <form id="addForm" action="/dashboard/study/program/<?php echo $sp->id; ?>/course" class="row"
                   method="post">
                 <input type="hidden" name="_method" value="put">
                 <input type="hidden" name="redniBroj" value="<?php echo count($predmeti) + 1; ?>">

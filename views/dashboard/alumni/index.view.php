@@ -55,7 +55,7 @@
                        placeholder="Послодавац">
                 <datalist id="listPoslodavac">
                     <?php foreach ($poslodavci as $poslodavac) : ?>
-                        <option value="<?php echo $poslodavac; ?>"></option>
+                        <option value="<?php echo $poslodavac->poslodavac; ?>"></option>
                     <?php endforeach; ?>
                 </datalist>
 

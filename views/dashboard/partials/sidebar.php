@@ -52,6 +52,14 @@
                 <li class="sidebar-item">
                     <a
                             class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="/dashboard/alumni"
+                            aria-expanded="false"
+                    ><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Алумни</span></a
+                    >
+                </li>
+                <li class="sidebar-item">
+                    <a
+                            class="sidebar-link waves-effect waves-dark sidebar-link"
                             href="/dashboard/news"
                             aria-expanded="false"
                     ><i class="mdi mdi-receipt"></i><span class="hide-menu">Вести</span></a

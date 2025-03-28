@@ -9,6 +9,10 @@ input, textarea, select {
     line-height: 40px
 }
 
+.form-control, .form-check-input {
+    min-height: unset;
+}
+
 .select2-container {
     width: 100% !important;
 }

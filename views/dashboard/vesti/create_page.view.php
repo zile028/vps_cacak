@@ -27,7 +27,7 @@
     <!-- Start form -->
     <!-- ============================================================== -->
     <div class="card">
-        <form class="card-body" action="/news/add" method="post" enctype="multipart/form-data">
+        <form class="card-body" action="/dashboard/news/add" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
                     <h4>Српски</h4>
@@ -87,9 +87,9 @@
                     </div>
                 <?php endif; ?>
                 <div class="d-flex col-md-6 gap-3">
-                    <div class="col-md-6 border border-dark" style="height: 150px">
+                    <div class="col-md-6 border border-dark p-1" style="height: 200px">
                         <a id="imagePreviewA" href="<?php uploadPath($media[0]->storeName); ?>" target="_blank">
-                            <img id="imagePreview" class="h-100 w-100" style="object-fit: cover"
+                            <img id="imagePreview" class="h-100 w-100" style="object-fit: contain"
                                  src="<?php uploadPath($media[0]->storeName); ?>"
                                  alt="featured image">
                         </a>
@@ -98,7 +98,8 @@
                     <div class="col-md-6">
                         <label for="featuredImage">Насловна слика</label>
                         <?php if (count($media) > 0): ?>
-                            <select id="featuredImage" class="form-control select2" name="featured_imageID">
+                            <select id="featuredImage" class="form-control select2" data-image="preview"
+                                    name="featured_imageID">
                                 <?php foreach ($media as $image) : ?>
                                     <option value="<?php echo $image->id; ?>"
                                             data-storeName="<?php uploadPath($image->storeName); ?>">

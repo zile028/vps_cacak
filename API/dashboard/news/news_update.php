@@ -22,4 +22,4 @@ $data = [
 ];
 $result = $db->query($sql, $data)->find();
 
-redirect("/news");
+redirect("/dashboard/news");

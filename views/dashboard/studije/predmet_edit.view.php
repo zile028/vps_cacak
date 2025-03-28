@@ -9,7 +9,7 @@
 <!-- End PAge Content -->
 <!-- ============================================================== -->
 <div class="card">
-    <form class="form-horizontal" action="/study/course/<?php echo $predmet->id; ?>" method="post"
+    <form class="form-horizontal" action="/dashboard/study/course/<?php echo $predmet->id; ?>" method="post"
           enctype="multipart/form-data">
         <input type="hidden" name="_method" value="put">
         <div class="card-body">
@@ -97,6 +97,19 @@
                             name="espb"
                             value="<?php echo $predmet->espb; ?>"
                     />
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <label class="col-sm-3 text-end" for="nastavniPlan">Наставни план</label>
+                <div class="col-sm-9">
+                    <div class="select2-border">
+                        <select class="select2" id="nastavniPlan" name="nastavniPlan">
+                            <option value="<?php echo null; ?>" selected>Нема наставни план</option>
+                            <?php foreach ($nastavniPlanovi as $plan): ?>
+                                <option value="<?php echo $plan->id; ?>" <?php echo $plan->id == $predmet->nastavniPlan ? "selected" : ""; ?> ><?php echo $plan->fileName; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>

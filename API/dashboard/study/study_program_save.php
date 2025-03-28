@@ -5,6 +5,7 @@ $sql = "
     VALUES (:nivoID, :naziv, :modul, :trajanje, :espb, :zvanje, :polje, :akreditovan, :cilj, :opis, :ishod, :lang)
 ";
 $lastId = [];
+
 try {
     foreach ($_POST as $key => $value) {
         $value["lang"] = $key;
@@ -17,7 +18,7 @@ try {
     $data = array_values($lastId);
     array_unshift($data, $relation);
     $result = $db->query($sql, $data)->find();
-    redirect("/study");
+    redirect("/dashboard/study");
 } catch (Exception $e) {
     displayErrorPage($e);
 }

@@ -82,6 +82,18 @@
             </div>
         </div>
     </div>
+<?php if (hasErrors()): ?>
+    <div class="alert alert-danger mt-2" role="alert">
+        <h4 class="alert-heading">Greška!</h4>
+        <hr>
+        <ul>
+            <?php foreach (getFlashErrors() as $err): ?>
+                <li><?php echo $err; ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+<?php endif; ?>
 
 <?php foreach ($nivoiStudija as $lang => $nivoi): ?>
     <div class="card">
@@ -116,7 +128,14 @@
                 </div>
             </div>
             <div class="card-footer alert alert-primary d-flex justify-content-end">
-                <a class="btn btn-sm btn-warning" href="/dashboard/study/level/<?php echo $nivo->id; ?>">Edit</a>
+                <a class="btn btn-sm btn-warning rounded-2"
+                   href="/dashboard/study/level/<?php echo $nivo->id; ?>"><i class="mdi mdi-settings"></i></a>
+                <form action="/dashboard/study/level/<?php echo $nivo->id; ?>" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="btn btn-sm btn-danger ms-1 rounded-2"><i class="mdi mdi-delete"></i>
+                    </button>
+
+                </form>
             </div>
         <?php endforeach; ?>
     </div>

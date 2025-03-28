@@ -10,5 +10,5 @@ $data = $_POST;
 $data["content"] = $data["content"][$data["type"]];
 $data["isActive"] = isset($_POST["isActive"]);
 $result = $db->query($sql, $data);
-redirect("/widget");
+redirect("/dashboard/widget");
 

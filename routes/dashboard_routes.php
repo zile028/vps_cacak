@@ -3,6 +3,12 @@ $prefix = "/dashboard";
 require_once "dashboard_staff.php";
 require_once "dashboard_documents.php";
 require_once "dashboard_study.php";
+require_once "dashboard_admission.php";
+require_once "dashboard_widget.php";
+require_once "dashboard_navbar.php";
+require_once "dashboard_schedule.php";
+require_once "dashboard_news.php";
+require_once "dashboard_alumni.php";
 
 $router->get($prefix . "/migration", "/migration/index.php")->only(ADMIN);
 $router->get($prefix . "/error/:code", "dashboard/error/index.php");
@@ -50,31 +56,6 @@ $router->patch($prefix . "/cooperation/:id", "dashboard/cooperation/update.php")
 $router->delete($prefix . "/cooperation/:id", "dashboard/cooperation/delete.php")->only(AUTH);
 $router->post($prefix . "/cooperation/:type", "dashboard/cooperation/save.php")->only(AUTH);
 
-//ADMISSION
-$router->get($prefix . "/admission", "dashboard/admission/index.php")->only(AUTH);
-$router->get($prefix . "/admission/create", "dashboard/admission/create.page.php")->only(AUTH);
-$router->get($prefix . "/admission/requirement/:id", "dashboard/admission/requirement_edit.page.php")->only(AUTH);
-
-$router->patch($prefix . "/admission/requirement/:id", "dashboard/admission/update_requirement.php")->only(AUTH);
-$router->patch($prefix . "/admission/requirement/priority/:id", "dashboard/admission/update_requirement_priority.php")->only(AUTH);
-
-$router->post($prefix . "/admission/create", "dashboard/admission/save_new.php")->only(AUTH);
-
-//WIDGET
-$router->get($prefix . "/widget", "dashboard/widget/index.php")->only(ADMIN);
-$router->get($prefix . "/widget/create", "dashboard/widget/create.php")->only(ADMIN);
-$router->post($prefix . "/widget/create", "dashboard/widget/save.php")->only(ADMIN);
-$router->put($prefix . "/widget/:id", "dashboard/widget/update.php")->only(ADMIN);
-$router->delete($prefix . "/widget/:id", "dashboard/widget/delete.php")->only(ADMIN);
-
-//NAVBAR
-$router->get($prefix . "/navbar", "dashboard/navbar/index.php")->only(ADMIN);
-
-$router->post($prefix . "/navbar", "dashboard/navbar/create.php")->only(ADMIN);
-$router->post($prefix . "/navbar/:itemID", "dashboard/navbar/update.php")->only(ADMIN);
-
-$router->delete($prefix . "/navbar/:itemID", "dashboard/navbar/destroy.php")->only(ADMIN);
-
 //KORISNICI
 $router->get($prefix . "/users", "dashboard/users/index.php")->only(AUTH);
 $router->get($prefix . "/users/create", "dashboard/users/user_create_page.php")->only(AUTH);
@@ -84,16 +65,6 @@ $router->put($prefix . "/users/profile", "dashboard/users/updateProfile.php");
 $router->put($prefix . "/users/password", "dashboard/users/changePassword.php");
 $router->patch($prefix . "/users/:id", "dashboard/users/update_user.php")->only(AUTH);
 $router->delete($prefix . "/users/:id", "dashboard/users/user_delete.php")->only(AUTH);
-
-//RASPOREDI
-$router->get($prefix . "/schedule", "dashboard/schedule/index.php")->only(AUTH);
-$router->get($prefix . "/schedule/:id/:lang", "dashboard/schedule/schedule_show.php")->only(AUTH);
-$router->get($prefix . "/schedule/exams", "dashboard/schedule/exams_index.php")->only(AUTH);
-
-$router->post($prefix . "/schedule/:category/:lang", "dashboard/schedule/schedule_create.php")->only(AUTH);
-
-$router->delete($prefix . "/schedule/:id", "dashboard/schedule/delete_schedule.php")->only(AUTH);
-
 
 //AUTH
 $router->get($prefix . "/login", "dashboard/auth/show.php");
@@ -106,17 +77,6 @@ $router->post($prefix . "/login", "dashboard/auth/login.php");
 //CONFIG
 $router->get($prefix . "/config/lang/:lang", "dashboard/config/change_language.php")->only(AUTH);
 
-//VESTI
-$router->get($prefix . "/news", "dashboard/news/show.php")->only(AUTH);
-$router->get($prefix . "/news/add", "dashboard/news/news_add_page.php")->only(AUTH);
-$router->get($prefix . "/news/edit/:id", "dashboard/news/news_edit_page.php")->only(AUTH);
-
-$router->patch($prefix . "/news/edit/:id", "dashboard/news/news_update.php")->only(AUTH);
-$router->patch($prefix . "/news/publish/:id", "dashboard/news/news_publish_update.php")->only(ADMIN);
-
-$router->post($prefix . "/news/add", "dashboard/news/news_save.php")->only(AUTH);
-
-$router->delete($prefix . "/news/:id", "dashboard/news/news_delete.php")->only(AUTH);
 
 //MEDIA
 $router->get($prefix . "/media", "dashboard/media/index.php")->only(AUTH);

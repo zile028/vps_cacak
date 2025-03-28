@@ -36,16 +36,14 @@
                             <td><?php echo $item->godina; ?></td>
                             <td><?php dateDDMMYYY($item->createdAt); ?></td>
                             <td>
-                                <form action="/schedule/lecture/active/<?php echo $item->id;
+                                <form action="/dashboard/schedule/status/<?php echo $item->id;
                                 ?>" method="post">
                                     <input type="hidden" name="_method" value="patch">
-                                    <input type="hidden" name="active" value="<?php echo
-                                    $item->active ? 0 : 1; ?>">
                                     <button class="btn btn-sm btn-warning w-100 mb-1"><?php echo
                                         ($item->active ? "ДЕАКТИВИРАЈ" : "АКТИВИРАЈ");
                                         ?></button>
                                 </form>
-                                <form action="/schedule/<?php echo $item->id; ?>"
+                                <form action="/dashboard/schedule/<?php echo $item->id; ?>"
                                       method="post">
                                     <input type="hidden" name="_method" value="delete">
                                     <button class="btn btn-sm btn-danger w-100">ОБРИШИ</button>

@@ -9,7 +9,7 @@
 </div>
 
 <div class="card p-2">
-    <form action="/admission/create" class="row" method="post">
+    <form action="/dashboard/admission/create" class="row" method="post">
         <input type="hidden" name="lang" value="<?php echo $nivoStudija[0]->lang; ?>">
         <div class="d-flex flex-column col-md-6">
             <label for="title">Uslov</label>

@@ -17,6 +17,7 @@ $router->post($prefix . "/study/course/add", "dashboard/study/save_course.php")-
 $router->delete($prefix . "/study/course/:id", "dashboard/study/delete_course.php")->only(AUTH);
 $router->delete($prefix . "/study/program/:id", "dashboard/study/delete_study.php")->only(AUTH);
 $router->delete($prefix . "/study/:spID/course/remove/:id", "dashboard/study/study_course_remove.php")->only(AUTH);
+$router->delete($prefix . "/study/level/:id", "dashboard/study/study_level_delete.php")->only(AUTH);
 
 $router->put($prefix . "/study/program/:id", "dashboard/study/study_program_update.php")->only(AUTH);
 $router->put($prefix . "/study/program/:id/course", "dashboard/study/study_program_course.php")->only(AUTH);

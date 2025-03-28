@@ -26,7 +26,7 @@
                     <tr>
                         <td style="width: 100px">
                             <?php if (isset($predmet->redniBroj)): ?>
-                                <form action="/study/<?php echo $sp->id; ?>/<?php echo $predmet->id ?>/order"
+                                <form action="/dashboard/study/<?php echo $sp->id; ?>/<?php echo $predmet->id ?>/order"
                                       class="d-flex" method="post">
                                     <input type="hidden" name="_method" value="patch">
                                     <input class="form-control form-select-sm text-center"
@@ -50,9 +50,9 @@
                         <td class=""><?php echo $predmet->espb; ?></td>
                         <td>
                             <?php if (isset($flag) && $flag === "remove") {
-                                $href = "/study/$sp->id/course/remove/$predmet->id";
+                                $href = "/dashboard/study/$sp->id/course/remove/$predmet->id";
                             } else {
-                                $href = "/study/course/$predmet->id";
+                                $href = "/dashboard/study/course/$predmet->id";
                             } ?>
 
                             <form action="<?php echo $href; ?>"

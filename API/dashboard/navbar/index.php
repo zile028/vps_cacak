@@ -17,4 +17,4 @@ $menu = buildMenu($fullMenu);
 //dd(buildMenuTable($menu));
 //\Core\Response::send($menu);
 //\Core\Response::send($fullMenu);
-view("dashboard//navbar/index.view", ["menu" => $menu, "parents" => $fullMenu]);
+view("dashboard/navbar/index.view", ["menu" => $menu, "parents" => $fullMenu]);

@@ -33,6 +33,7 @@ $media = $db->nextRowsetFind(PDO::FETCH_GROUP);
 $rasporedi = $db->nextRowsetFind(PDO::FETCH_GROUP);
 $godine = $db->nextRowsetFind();
 $kategorija = $db->nextRowsetFindOne();
+//dd($rasporedi);
 if ($kategorija->slug === "work") {
     view("dashboard/raspored/plan_rada.view", ["media" => $media, "kategorija" => $kategorija]);
 } else {
