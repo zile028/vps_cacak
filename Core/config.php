@@ -16,7 +16,7 @@ return $_SERVER["SERVER_NAME"] === "localhost" ?
         "database" => [
             "host" => "localhost",
             "port" => 3306,
-            "dbname" => "vpscacak_vps_sajt",
+            "dbname" => "vpscacak_website",
             "charset" => "utf8mb4",
             "username" => "vpscacak_vps_admin",
             "password" => "R!1kQaJUi%U;"
