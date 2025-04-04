@@ -1,7 +1,13 @@
 <?php require_once __DIR__ . '/../partials/top.php'; ?>
     <!--  -->
 <?php require_once __DIR__ . '/../partials/sidebar.php'; ?>
-
+    <style>
+        td {
+            vertical-align: middle;
+            width: 1%;
+            text-wrap: nowrap;
+        }
+    </style>
     <!-- =============================== =============================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
@@ -106,40 +112,55 @@
                     <tr>
                         <th></th>
                         <th>Име и Презиме</th>
-                        <th>Звање</th>
+                        <th>Ниво</th>
                         <th>Дипломирао</th>
                         <th>Послодавац</th>
                         <th>Посао</th>
+                        <th>Одобри</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php foreach ($alumnisti as $item): ?>
-                        <tr>
-                            <td style="width: 30px"><a
+                        <tr id="<?php echo $item->id; ?>">
+                            <td style="width: 30px">
+                                <a
                                         href="/dashboard/alumni/<?php echo $item->id; ?>">
                                     <img style="height: 30px; width: 30px; object-fit: cover"
                                          class="rounded-circle"
-                                         src="<?php uploadPath($item->storeName); ?>"
+                                         src="<?php echo uploadPath($item->storeName); ?>"
                                          alt="<?php echo $item->firstName; ?>">
-                                </a></td>
-                            <td>
+                                </a>
+                            </td>
+                            <td style="width: auto">
                                 <?php echo $item->firstName; ?>
                                 <?php echo $item->lastName; ?>
                             </td>
-                            <td><?php echo $item->zvanje; ?></td>
+                            <td><?php echo $item->nivo; ?></td>
                             <td><?php echo $item->diplomirao; ?></td>
                             <td><?php echo $item->poslodavac; ?></td>
-                            <td><?php echo $item->posao; ?></td>
+                            <td><?php echo $item->radnoMesto; ?></td>
                             <td>
-
+                                <form action="/dashboard/alumni/status/<?php echo $item->id; ?>" method="post"
+                                      class="d-flex justify-content-center align-items-center"
+                                >
+                                    <input type="hidden" name="_method" value="patch">
+                                    <button style="height: 1em;width: 1em; font-size: 24px"
+                                            class="btn text-primary m-0 p-0 lh-1">
+                                        <?php if ($item->active): ?>
+                                            <i class="mdi mdi-checkbox-marked-circle"></i>
+                                        <?php else: ?>
+                                            <i class="mdi mdi-checkbox-blank-circle-outline"></i>
+                                        <?php endif; ?>
+                                    </button>
+                                </form>
                             </td>
-                            <td class="d-flex gap-1">
-                                <!--                                <a class="btn btn-sm btn-info"-->
-                                <!--                                   href="/dashboard/alumni/-->
-                                <?php //echo $item->id; ?><!--"><i-->
-                                <!--                                            class="mdi mdi-account-card-details"></i></a>-->
-
+                            <td class="d-flex gap-1 w-auto">
+                                <a class="btn btn-sm btn-warning"
+                                   href="/dashboard/alumni/<?php echo $item->id; ?>">
+                                    <i class="mdi mdi-account-settings"></i>
+                                </a>
+                                <!---->
                                 <form action="/dashboard/alumni/<?php echo $item->id; ?>"
                                       method="post">
                                     <input type="hidden" name="_method" value="delete">

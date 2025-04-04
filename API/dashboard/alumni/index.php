@@ -1,4 +1,7 @@
 <?php
+
+use Core\Session;
+
 $db = \Core\App::resolve(\Core\Database::class);
 $sql = "SELECT ns.title, ns.title AS nivo, sp.id,
             IF(modul IS NOT NULL , CONCAT(naziv, ' - ', modul), naziv) AS spNaziv
@@ -11,12 +14,10 @@ $sql = "SELECT ns.title, ns.title AS nivo, sp.id,
         SELECT id,fileName, storeName FROM media WHERE mimetype LIKE 'image/%';
 
         SELECT a.*, m.storeName, 
-               IF(modul IS NOT NULL , CONCAT(sp.naziv, ' - ', sp.modul), sp.naziv) AS spNaziv, 
-               ns.title AS nivo, sp.zvanje
+               ns.title AS nivo
             FROM alumni a
             LEFT JOIN media m ON m.id = a.imageID
             JOIN nivo_studija ns ON ns.id =a.nivoID 
-            JOIN studijski_programi sp ON sp.nivoID = a.nivoID
             WHERE a.lang = :lang;
 ";
 $studije = $db->query($sql, ["lang" => "srb"])->find(PDO::FETCH_OBJ | PDO::FETCH_GROUP);

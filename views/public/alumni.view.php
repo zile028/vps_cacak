@@ -27,7 +27,7 @@
                     <?php showError("jmbg"); ?>
                 </div>
                 <div class="form-group">
-                    <label for="lastName">E-mail</label>
+                    <label for="email">E-mail</label>
                     <input id="email" name="email" type="email" placeholder="E-mail"
                            value="<?php echo getFlash(INPUTS_FLASH, "email"); ?>">
                     <?php showError("email"); ?>

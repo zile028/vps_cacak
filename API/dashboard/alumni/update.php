@@ -17,27 +17,28 @@ $validator->validate("email", "email", "Email није исправан.");
 $validator->validate("jmbg", "string", "ЈМБГ мора садржати 13 цифара.", 13, 13);
 $validator->validate("jmbg", "jmbg", "ЈМБГ није валидан.");
 $validator->validate("diplomirao", "number", "Година дипломирања је обавезна или није валидна.", 1999, 9999);
-
+$validator->appendData("active", isset($_POST["active"]) ? 1 : 0);
+$validator->appendData("id", $params["id"]);
 try {
-
     if ($validator->hasError()) {
         Session::flash(ERRORS_FLASH, $validator->getErrors());
-        Session::flash("inputs", $validator->getData());
+        Session::flash(INPUTS_FLASH, $validator->getData());
     } else {
-        $sql = "INSERT INTO alumni 
-                    (firstName, lastName, nivoID, diplomirao, poslodavac, radnoMesto, email, jmbg, imageID)
-                VALUES 
-                    (:firstName, :lastName, :studyLevel, :diplomirao, :poslodavac, :radnoMesto, :email, :jmbg, (SELECT id FROM media WHERE fileName LIKE 'avatar' LIMIT 1));";
+        $sql = "UPDATE alumni SET 
+                  firstName = :firstName,
+                  lastName = :lastName,
+                  poslodavac = :poslodavac,
+                  radnoMesto = :radnoMesto,
+                  email = :email,
+                  jmbg = :jmbg,
+                  diplomirao = :diplomirao,
+                  active = :active,
+                  nivoID=:studyLevel
+              WHERE id = :id; 
+        ";
         $db->query($sql, $validator->getData());
-        Session::flash(RESPONSE_FLASH, "Ваша пријава је успешна. Биће видљива након што је студентска служба верификује!");
     }
     redirectBack();
 } catch (Exception $e) {
-    Session::flash(INPUTS_FLASH, $validator->getData());
-    if ($e->getCode() == 23000) {
-        Session::flash(ERROR_RESPONSE_FLASH, "Ваша пријава није успела, већ постоји кандидат са овим ЈМБГ-ом или E-mail-om!");
-    } else {
-        Session::flash(ERROR_RESPONSE_FLASH, $e->getMessage());
-    }
-    redirectBack();
+    displayErrorPage($e);
 }
