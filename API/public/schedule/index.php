@@ -11,11 +11,14 @@ $sql = "SELECT ns.title AS nivo, r.*, m.fileName, m.storeName, sp.naziv, sp.modu
             JOIN nivo_studija ns ON ns.id = sp.nivoID
             JOIN media m ON m.id = r.mediaID
             JOIN raspored_kategorija rk ON rk.id = r.kategorija
-            WHERE rk.slug = :slug;";
-$raspored = $db->query($sql, ["slug" => $params["slug"]])->find(PDO::FETCH_OBJ | PDO::FETCH_GROUP);
+            WHERE rk.slug = :slug;
+        SELECT kategorija FROM raspored_kategorija WHERE slug = :slug;
+";
 
+$raspored = $db->query($sql, ["slug" => $params["slug"]])->find(PDO::FETCH_OBJ | PDO::FETCH_GROUP);
+$kategorija = $db->nextRowsetFindOne();
 view("public/raspored.view", [
     "heroImage" => "hero_raspored.jpg",
-    "heroTitle" => "Распоред испита",
+    "heroTitle" => $kategorija->kategorija,
     "rasporedi" => $raspored
 ]);
