@@ -1,7 +1,7 @@
 <?php
 const DASHBOARD_ROOT = "/dashboard";
-const BE_PRODUCTION_URI = "https://test.vpscacak.edu.rs";
-const FE_PRODUCTION_URI = "https://test.vpscacak.edu.rs";
+const BE_PRODUCTION_URI = "https://vpscacak.edu.rs";
+const FE_PRODUCTION_URI = "https://vpscacak.edu.rs";
 const UPLOAD_DIR_NAME = "/uploads/";
 const UPLOAD_DIR = BASE_PATH . UPLOAD_DIR_NAME;
 const ASSET_IMAGE = "/assets/images/";
