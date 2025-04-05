@@ -9,7 +9,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="row">
                 <h3><?php echo "$user->firstName $user->lastName"; ?></h3>
-                <form class="col-md-6" method="post" action="/users/profile">
+                <form class="col-md-6" method="post" action="/dashboard/users/profile">
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="image" class="form-control mb-2" placeholder="Image"
                            id="profileImage"
@@ -48,7 +48,7 @@
                         <button class="btn btn-primary form-control">Ažuriraj</button>
                     </div>
                 </form>
-                <form class="col-md-6" method="post" action="/users/profile">
+                <form class="col-md-6" method="post" action="/dashboard/users/profile">
                     <div class="mb-2 d-flex justify-content-end align-items-center gap-2">
                         <button type="button"
                                 onclick="pasteInto('profileImage','imgPreview')"

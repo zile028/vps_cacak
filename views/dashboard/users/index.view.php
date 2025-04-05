@@ -10,7 +10,7 @@
     <div class="row">
         <!-- Column -->
         <div class="col-md-6 col-lg-4 col-xlg-3">
-            <a href="/users/create">
+            <a href="/dashboard/users/create">
                 <div class="card card-hover">
                     <div class="box bg-cyan text-center">
                         <h1 class="font-light text-white">
@@ -40,14 +40,15 @@
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Email: <?php echo $user->email; ?></li>
-                                    <li class="list-group-item d-flex align-items-center"><span class="me-1">Role:</span>
+                                    <li class="list-group-item d-flex align-items-center"><span
+                                                class="me-1">Role:</span>
                                         <?php updateSelect(
-                                            "/users/" . $user->id, "role", $roles, $user->role); ?>
+                                            "/dashboard/users/" . $user->id, "role", $roles, $user->role); ?>
                                     </li>
                                 </ul>
                             </div>
                             <div class="card-footer">
-                                <?php echo deleteForm("/users/" . $user->id); ?>
+                                <?php echo deleteForm("/dashboard/users/" . $user->id); ?>
                             </div>
                         </div>
                     </div>
