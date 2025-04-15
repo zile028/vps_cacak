@@ -819,6 +819,14 @@ COURSES
 .courses .card-body .btn {
   margin-top: 20px;
 }
+.courses .attachment {
+  width: 48%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  float: left;
+  margin: 1%;
+}
 
 /*************
 CTA
@@ -1015,6 +1023,19 @@ ABOUT
   justify-content: space-between;
   align-items: stretch;
   gap: 30px;
+}
+.about-half {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 940px) {
+  .about-half {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.about-half img {
+  width: 100%;
 }
 .about h2 {
   text-align: left;

@@ -499,6 +499,16 @@ COURSES
                 margin-top: 20px;
             }
         }
+
+    }
+
+    .attachment {
+        width: 48%;
+        height: auto;
+        aspect-ratio: 1;
+        border-radius: 10px;
+        float: left;
+        margin: 1%;
     }
 }
 
@@ -684,6 +694,19 @@ ABOUT
 .about {
     @include flex;
     gap: 30px;
+
+    &-half {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        @media (max-width: 940px) {
+            grid-template-columns: repeat(1, 1fr);
+        };
+
+        img {
+            width: 100%;
+        }
+    }
 
     h2 {
         text-align: left;
